@@ -1,0 +1,329 @@
+{
+  "schema_version": "traveler-screen-route-v1",
+  "framework": "nextjs-app-router",
+  "source_documents": [
+    "docs/03_UI_COVERAGE_ANALYSIS.md",
+    "docs/04_UIUX_PLAN.md",
+    "docs/STITCH_VALIDATION_REPORT.md",
+    "design-reference/D-001/DESIGN.md",
+    "design-reference/UI_CONTRACT.md"
+  ],
+  "screen_classification": {
+    "core_functions": [
+      { "function": "여행지 탐색", "screen_id": "SCR-001" },
+      { "function": "항공", "screen_id": "SCR-003" },
+      { "function": "숙소", "screen_id": "SCR-003" },
+      { "function": "동행 찾기", "screen_id": "SCR-004" }
+    ],
+    "auxiliary_functions": [
+      { "function": "대표 소개", "screen_id": "SCR-002" }
+    ],
+    "supporting_screens": [
+      { "function": "계정·관리(로그인/프로필/내 활동/간단 관리자)", "screen_id": "SCR-005" }
+    ]
+  },
+  "screens": [
+    {
+      "screen_id": "SCR-001",
+      "route": "/",
+      "page_entry": "src/app/page.tsx",
+      "classification": "core",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": true,
+      "section_order": [
+        "header",
+        "search_hero",
+        "domestic_destination_card_grid",
+        "overseas_destination_card_grid",
+        "travel_theme_chip_list",
+        "country_safety_card_grid",
+        "recent_mate_post_list_or_empty_state",
+        "representative_summary_cta",
+        "footer"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "SearchBarPill",
+        "DestinationCardGrid",
+        "ThemeChipList",
+        "SafetyCardGrid",
+        "DestinationDrawer",
+        "SafetyDrawer",
+        "MatePostMiniList",
+        "EmptyState",
+        "RepresentativeSummaryCard"
+      ],
+      "states": ["loading", "success", "empty", "error"],
+      "user_actions": [
+        "search_keyword",
+        "toggle_theme_chip",
+        "toggle_favorite",
+        "open_destination_drawer",
+        "open_safety_drawer",
+        "click_mate_post_card",
+        "click_cta"
+      ],
+      "forbidden_features": [
+        "star_rating_or_review",
+        "fabricated_realtime_stats",
+        "airbnb_trademark_or_copy",
+        "booking_or_payment_ui",
+        "ad_banner",
+        "colors_outside_d001_token_table"
+      ]
+    },
+    {
+      "screen_id": "SCR-002",
+      "route": "/about",
+      "page_entry": "src/app/about/page.tsx",
+      "classification": "auxiliary",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "section_order": [
+        "header",
+        "profile_hero",
+        "travel_stats",
+        "intro_paragraphs",
+        "travel_timeline",
+        "visited_country_chip_by_region",
+        "photo_gallery",
+        "memorable_destinations_cta",
+        "footer"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "ProfileHero",
+        "StatCard",
+        "IntroText",
+        "Timeline",
+        "CountryChipGroup",
+        "PhotoGallery",
+        "DestinationCardGrid",
+        "CTABanner"
+      ],
+      "states": ["loading", "success", "error"],
+      "user_actions": [
+        "click_country_chip",
+        "click_destination_card",
+        "click_cta_banner"
+      ],
+      "forbidden_features": [
+        "star_rating_or_review",
+        "airbnb_trademark_or_copy",
+        "booking_or_payment_ui",
+        "ad_banner",
+        "colors_outside_d001_token_table"
+      ]
+    },
+    {
+      "screen_id": "SCR-003",
+      "route": "/travel-tools",
+      "page_entry": "src/app/travel-tools/page.tsx",
+      "classification": "core",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "section_order": [
+        "header",
+        "intro_3step_summary",
+        "tab_bar_flight_hotel_mate",
+        "trip_condition_form",
+        "summary_and_outbound_action_card",
+        "non_transmission_notice_and_tips",
+        "mate_tab_login_guide_or_write_form",
+        "footer"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "IntroSection",
+        "TabBar",
+        "TripConditionForm",
+        "SummaryActionCard",
+        "NonTransmissionNotice",
+        "TipChipList",
+        "MateWriteForm",
+        "LoginGuideCard"
+      ],
+      "states": ["loading", "success", "empty", "error", "unauthorized"],
+      "user_actions": [
+        "switch_tab",
+        "input_and_validate_condition",
+        "confirm_summary",
+        "click_outbound_link",
+        "submit_mate_post_draft",
+        "agree_safety_pledge",
+        "click_login_signup"
+      ],
+      "forbidden_features": [
+        "internal_price_comparison_copy",
+        "realtime_badge_without_data",
+        "star_rating_or_review",
+        "fabricated_realtime_stats",
+        "server_side_storage_of_raw_trip_input",
+        "booking_or_payment_ui"
+      ]
+    },
+    {
+      "screen_id": "SCR-004",
+      "route": "/mates",
+      "page_entry": "src/app/mates/page.tsx",
+      "classification": "core",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "section_order": [
+        "header",
+        "intro_and_write_cta",
+        "filter_bar_and_result_summary",
+        "mate_post_card_list_or_empty_state",
+        "list_detail_split_or_drawer",
+        "apply_3step_guide",
+        "safety_report_block_notice_cta",
+        "footer"
+      ],
+      "key_components": [
+        "Header",
+        "Footer",
+        "IntroCTA",
+        "MateFilterBar",
+        "MatePostCardList",
+        "MateDetailPanel",
+        "MateDetailDrawer",
+        "ApplyStepGuide",
+        "SafetyNoticeCTA",
+        "EmptyState"
+      ],
+      "states": ["loading", "success", "empty", "error", "unauthorized"],
+      "user_actions": [
+        "apply_filter",
+        "open_mate_detail",
+        "submit_application_message",
+        "trigger_report_or_block",
+        "click_write_cta"
+      ],
+      "forbidden_features": [
+        "star_rating_or_review",
+        "manner_temperature_badge",
+        "exposed_contact_info",
+        "fabricated_realtime_stats",
+        "airbnb_trademark_or_copy",
+        "booking_or_payment_ui"
+      ]
+    },
+    {
+      "screen_id": "SCR-005",
+      "route": "/account",
+      "page_entry": "src/app/account/page.tsx",
+      "classification": "supporting",
+      "page_owner_task_required": true,
+      "preview_required": true,
+      "starter_template_forbidden": false,
+      "section_order_by_role": {
+        "guest": [
+          "header",
+          "account_intro",
+          "login_signup_reset_form",
+          "post_login_feature_list",
+          "security_notice",
+          "footer"
+        ],
+        "member": [
+          "header",
+          "profile_and_adult_verification_summary",
+          "my_posts",
+          "my_applications",
+          "block_list",
+          "new_mate_post_cta",
+          "footer"
+        ],
+        "admin": [
+          "header",
+          "admin_intro",
+          "report_status_management",
+          "outbound_url_settings",
+          "footer"
+        ]
+      },
+      "key_components": [
+        "Header",
+        "Footer",
+        "AccountTabNav",
+        "AuthForms",
+        "ProfileSummaryCard",
+        "MyPostList",
+        "RequestList",
+        "BlockList",
+        "EmptyState",
+        "AdminReportQueue",
+        "OutboundUrlForm"
+      ],
+      "states": ["loading", "success", "empty", "error", "unauthorized"],
+      "user_actions": [
+        "submit_login_signup_reset",
+        "switch_tab",
+        "edit_profile",
+        "edit_close_delete_my_post",
+        "approve_or_reject_application",
+        "unblock_user",
+        "change_report_status",
+        "save_outbound_url"
+      ],
+      "role_tab_visibility_rule": "역할에 없는 탭은 렌더링하지 않는다. admin 탭은 어떤 화면 버전에서도 생략하지 않으며 신고 상태 변경과 외부 URL 설정을 항상 포함한다.",
+      "forbidden_features": [
+        "review_writing_feature",
+        "omitting_admin_tab",
+        "complex_analytics_dashboard",
+        "star_rating_or_review",
+        "airbnb_trademark_or_copy",
+        "booking_or_payment_ui"
+      ]
+    }
+  ],
+  "technical_routes": [
+    {
+      "path": "/auth/callback",
+      "type": "auth_callback",
+      "counted_as_screen": false,
+      "purpose": "Supabase Auth 이메일 인증·로그인 콜백 처리"
+    },
+    {
+      "path": "/api/*",
+      "type": "api_route",
+      "counted_as_screen": false,
+      "purpose": "동행글/참가요청/신고/차단/관리자 신고 상태·외부 URL 설정 등 서버 액션·API Route (항공·호텔 폼은 API Route 없이 클라이언트 상태로만 처리)"
+    },
+    {
+      "path": "not-found",
+      "type": "error_route",
+      "counted_as_screen": false,
+      "purpose": "404 처리 (src/app/not-found.tsx), 홈/이전/재시도 복구 행동 포함"
+    }
+  ],
+  "required_navigation": [
+    { "from": "SCR-001", "to": "SCR-003", "trigger": "검색 Hero/빠른 이동 CTA '여행 준비 시작하기'" },
+    { "from": "SCR-001", "to": "SCR-004", "trigger": "최근 동행글 '더 보기' 또는 Empty State 작성 CTA" },
+    { "from": "SCR-001", "to": "SCR-002", "trigger": "free_traveler 요약 '대표 소개 더 보기' CTA" },
+    { "from": "SCR-001", "to": "SCR-005", "trigger": "Header 계정 아이콘 클릭" },
+    { "from": "SCR-002", "to": "SCR-001", "trigger": "추천 여행지/방문 국가 클릭 (여행지·안전정보 Drawer)" },
+    { "from": "SCR-002", "to": "SCR-003", "trigger": "하단 CTA Banner '여행 준비 시작하기'" },
+    { "from": "SCR-002", "to": "SCR-004", "trigger": "하단 CTA Banner '동행 찾아보기'" },
+    { "from": "SCR-003", "to": "SCR-005", "trigger": "동행 탭 미인증 시 '로그인/가입하기' 안내" },
+    { "from": "SCR-003", "to": "SCR-004", "trigger": "동행글 작성 완료 후 이동" },
+    { "from": "SCR-004", "to": "SCR-005", "trigger": "비로그인/성인 미확인 상태에서 참가 요청·신고·차단 시도" },
+    { "from": "SCR-004", "to": "SCR-003", "trigger": "'동행글 작성하기' CTA 또는 하단 안전 안내 CTA" },
+    { "from": "SCR-005", "to": "SCR-004", "trigger": "'내 글' 목록에서 작성 글 클릭" },
+    { "from": "SCR-005", "to": "SCR-003", "trigger": "'새 동행글 작성' CTA" }
+  ],
+  "completion_checks": {
+    "screen_count_equals_5": true,
+    "no_duplicate_routes": true,
+    "no_duplicate_page_entries": true,
+    "core_count": 4,
+    "auxiliary_count": 1
+  }
+}
