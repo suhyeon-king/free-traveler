@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 49
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `.env.example`이 작성되었다(REQ-NF-016). 실제 Supabase 프로젝트 연결·값 설정은 이 Task 범위 밖이다(`SUPABASE-ENV-VERIFY` 등에서 확인).
 
 ---
 

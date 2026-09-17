@@ -13,8 +13,8 @@
       "status": "blocked",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": null,
-      "note": "/prepare-task W01 INFRA-ENV-SECRETS -> BLOCKED_DIRTY_TREE: git status --porcelain에 커밋되지 않은 변경이 남아 있어(.claude/commands/run-wave.md, .gitignore, TASKS/00_TASK_LIST.md, TASKS/TASK-E2E-MATE-AUTH.md, TASKS/WAVE_PLAN.md, TASKS/WAVE_STATE.json, next.config.ts, package-lock.json, package.json, .github/, .prettierignore, playwright.config.ts, scripts/check_screen_contract.py, tests/, vitest.config.ts) 구현을 시작하지 않음. 해결 후 /run-wave W01 --resume."
+      "last_completed_task": "INFRA-ENV-SECRETS",
+      "note": "/prepare-task W01 INFRA-OUTBOUND-LINKS -> BLOCKED_DIRTY_TREE: INFRA-ENV-SECRETS 구현 결과(.env.example 신규, .gitignore/TASKS/TASK-INFRA-ENV-SECRETS.md/TASKS/WAVE_STATE.json 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W01 --resume으로 이어간다."
     },
     {
       "wave_id": "W02",
