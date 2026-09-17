@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 32
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/shared/Drawer.tsx`(Desktop 좌/우 Drawer, Mobile Bottom Sheet), `src/components/shared/Modal.tsx`(Desktop 중앙 Modal, Mobile Bottom Sheet) 작성 완료. 둘 다 Focus Trap(열릴 때 내부 첫 요소로, 닫힐 때 트리거로 복귀), `Esc`/바깥(scrim) 클릭 닫힘, `rounded.md`(16px)·단일 그림자 톤·`rgba(0,0,0,0.5)` scrim을 디자인 값 그대로 적용했다. `SHR-A11Y-FOCUS`의 `getDialogAriaProps`를 재사용했다. Focus Trap 로직은 Expected Files가 파일별로 분리되어 있어 두 파일에 각각 구현했다(공용 lib 추출은 이 Task의 Expected Files 밖).
 
 ---
 
