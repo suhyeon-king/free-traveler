@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 41
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/data/destinations.ts` 작성 완료. 국내 10개 + 해외 15개국 30개 도시(총 40개), 각 항목에 소개(300자 이상)·명소(5개 이상)·추천 시기·1일/3일 일정·예산·교통·음식(3개 이상)·에티켓·출처·수정일 필드를 모두 채웠다(esbuild로 빌드해 개수·필드·중복 ID를 스크립트로 직접 검증). 이미지 필드는 실제 사진 자산이 없어 `/images/destinations/*.jpg` 정적 경로만 예약했다 — 실제 이미지 파일 업로드는 이 Task 범위 밖이며 콘텐츠 검수 단계에서 채워야 한다.
 
 ---
 
