@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 33
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/shared/EmptyState.tsx` 작성 완료. `reason`(사유)·`guidance`(이용 방법)·`action`(다음 행동 CTA, `onClick` 또는 `href` 중 하나 필수) 3개 필수 props를 타입으로 강제해 누락 시 컴파일 오류가 난다. `colors.surface-soft` 배경·`rounded.md`·코랄 CTA 버튼으로 빈 화면처럼 보이지 않게 구성했다. `SHR-A11Y-FOCUS`의 포커스 링/최소 터치 영역 상수를 재사용했다.
 
 ---
 

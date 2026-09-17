@@ -31,8 +31,8 @@
       "status": "blocked",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "SHR-DRAWER-MODAL",
-      "note": "/prepare-task W02 SHR-EMPTY-STATE -> BLOCKED_DIRTY_TREE(예상): SHR-DRAWER-MODAL 구현 결과(src/components/shared/Drawer.tsx, Modal.tsx 신규, TASKS/TASK-SHR-DRAWER-MODAL.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W02 --resume으로 이어간다."
+      "last_completed_task": "SHR-EMPTY-STATE",
+      "note": "/prepare-task W02 SHR-ERROR-NOTFOUND -> BLOCKED_DIRTY_TREE(예상): SHR-EMPTY-STATE 구현 결과(src/components/shared/EmptyState.tsx 신규, TASKS/TASK-SHR-EMPTY-STATE.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W02 --resume으로 이어간다."
     },
     {
       "wave_id": "W03",
