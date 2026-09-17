@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 51
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/outbound-link.ts`가 작성되었다(`validateOutboundUrl`/`openOutboundLink`). FLIGHT_OUTBOUND_URL/HOTEL_OUTBOUND_URL 등 실제 URL 값 연결과 UI(오류·재시도)는 `CMP-SCR003-FLIGHT-FORM`/`CMP-SCR003-HOTEL-FORM`/`CMP-SCR005-ADMIN` 범위다. TC-FUNC-016/018/024/026/077은 `docs/PROJECT_SCOPE.md`상 Playwright(`E2E-TRAVEL-TOOLS`)로 검증하도록 지정되어 있어 이 Task에서 별도 Unit Test를 추가하지 않았다.
 
 ---
 

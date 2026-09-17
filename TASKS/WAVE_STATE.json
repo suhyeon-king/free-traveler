@@ -13,8 +13,8 @@
       "status": "blocked",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "INFRA-ENV-SECRETS",
-      "note": "/prepare-task W01 INFRA-OUTBOUND-LINKS -> BLOCKED_DIRTY_TREE: INFRA-ENV-SECRETS 구현 결과(.env.example 신규, .gitignore/TASKS/TASK-INFRA-ENV-SECRETS.md/TASKS/WAVE_STATE.json 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W01 --resume으로 이어간다."
+      "last_completed_task": "INFRA-OUTBOUND-LINKS",
+      "note": "/prepare-task W01 INFRA-SECURITY-BASELINE -> BLOCKED_DIRTY_TREE: INFRA-OUTBOUND-LINKS 구현 결과(src/lib/outbound-link.ts 신규, TASKS/TASK-INFRA-OUTBOUND-LINKS.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W01 --resume으로 이어간다."
     },
     {
       "wave_id": "W02",
