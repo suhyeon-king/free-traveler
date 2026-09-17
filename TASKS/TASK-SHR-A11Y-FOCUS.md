@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 36
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/a11y.ts`(포커스 링/최소 터치 영역/visually-hidden 상수 + 탭·다이얼로그·알림 ARIA 속성 헬퍼), `src/components/shared/VisuallyHidden.tsx` 작성 완료. `SHR-RESPONSIVE-LAYOUT`(W03)이 아직 Tailwind Color Token을 정의하지 않아 `#1F4B8F`/3px/44px 디자인 값을 임의값(`[...]`) 문법으로 직접 참조했다 — 토큰이 정의되면 후속 작업에서 토큰 참조로 교체할 수 있다.
 
 ---
 
