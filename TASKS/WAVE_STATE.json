@@ -31,8 +31,8 @@
       "status": "blocked",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "DATA-REPRESENTATIVE",
-      "note": "/prepare-task W02 DATA-SAFETY -> BLOCKED_DIRTY_TREE(예상): DATA-REPRESENTATIVE 구현 결과(src/data/representative.ts 신규, TASKS/TASK-DATA-REPRESENTATIVE.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W02 --resume으로 이어간다."
+      "last_completed_task": "DATA-SAFETY",
+      "note": "/prepare-task W02 SHR-A11Y-FOCUS -> BLOCKED_DIRTY_TREE(예상): DATA-SAFETY 구현 결과(src/data/safety.ts 신규, TASKS/TASK-DATA-SAFETY.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W02 --resume으로 이어간다."
     },
     {
       "wave_id": "W03",

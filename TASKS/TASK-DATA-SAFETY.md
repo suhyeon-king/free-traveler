@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 42
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/data/safety.ts` 작성 완료. 해외 15개국(`destinations.ts`의 `countrySlug`와 완전히 일치, 스크립트로 직접 대조 확인) 전체에 8개 안전 카테고리(치안·흔한 사기·현지 법규·교통·재난·기후·보건·문화·복장·긴급연락처)와 출처명·출처 URL·최종 확인일·편집자 필드를 모두 채웠다. `isSafetyStale()` 헬퍼로 `verifiedAt` 기준 stale 여부 계산 로직을 제공한다(REQ-NF-028) — 실제 렌더링·경고 UI는 `CMP-SCR001-SAFETY-PANEL` 범위다. 출처는 대한민국 외교부 해외안전여행(0404.go.kr) 대표 URL로 통일했다(국가별 세부 페이지 경로는 확인 불가해 임의로 만들지 않았다).
 
 ---
 
