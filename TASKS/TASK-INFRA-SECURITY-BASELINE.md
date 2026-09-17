@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 50
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/security.ts`가 작성되었다(`SECURE_COOKIE_OPTIONS`, `escapeHtml`, `sanitizeUserText`). 실제 Server Action/쿠키 설정 코드에서의 적용은 `INFRA-AUTH`·동행 글쓰기 Component(`CMP-SCR003-MATE-WRITE` 등) 범위다. TC-NF-014/015는 `docs/PROJECT_SCOPE.md`상 통합/수동(OWASP 체크리스트) 테스트로 지정되어 있어 이 Task에서 별도 Unit Test를 추가하지 않았다.
 
 ---
 
