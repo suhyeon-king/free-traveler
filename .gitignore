@@ -44,3 +44,7 @@ next-env.d.ts
 /scripts/.cache/
 __pycache__/
 *.pyc
+
+# test artifacts
+/playwright-report/
+/test-results/

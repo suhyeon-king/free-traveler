@@ -1,0 +1,17 @@
+# Prettier 검사 범위 밖 — src, tests, 루트 설정 파일, .github/workflows만 검사한다.
+# (요구사항·Task·Wave 계획 문서는 서식 검사 대상이 아니다.)
+node_modules
+.next
+out
+build
+coverage
+playwright-report
+test-results
+package-lock.json
+next-env.d.ts
+docs
+TASKS
+design-reference
+.claude
+scripts
+public

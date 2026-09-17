@@ -3,7 +3,7 @@
 - **Document ID:** WAVE-PLAN-001
 - **schema_version:** traveler-wave-plan-v1
 - **생성:** `scripts/build_waves.py` (자동 생성 — 사람이 직접 편집하지 않는다. Task 그래프가 바뀌면 스크립트를 다시 실행해 재생성한다.)
-- **generated_at:** 2026-09-16T12:34:55+00:00
+- **generated_at:** 2026-09-17T11:35:13+00:00
 
 `.claude/commands/run-wave.md`가 참조하는 WAVE_PLAN(`TASKS/WAVES.md`) 정본이다. Wave ID는 W00~W10으로 사전에 고정하지 않았으며, 아래 표의 실제 값이 정본이다.
 

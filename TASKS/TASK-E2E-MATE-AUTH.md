@@ -49,7 +49,7 @@
 
 ## Expected Files
 
-- `tests/e2e/mate-auth.spec.ts`
+- `tests/e2e/auth-smoke.spec.ts`
 
 **이 Task는 위에 나열된 파일만 신규 생성하거나 수정한다. 목록 밖의 파일은 수정하지 않는다.**
 
