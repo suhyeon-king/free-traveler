@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 43
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/data/representative.ts` 작성 완료. 대표명·통계(50+ Trips/30+ Countries)·철학·타임라인(7개)·방문국가(32개국)·갤러리(8개)·추천 여행지(6개, `destinations.ts` 참조해 자동 제외 처리)·문의 링크(환경변수 기반, 빈 값 자동 제외)를 모두 포함한다. 갤러리 이미지 파일과 문의용 환경변수(`REPRESENTATIVE_CONTACT_EMAIL` 등) 실제 값은 이 Task 범위 밖이며, 값이 없으면 정의된 대로 화면에서 제외되는 것이 정상 동작이다.
 
 ---
 
