@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 39
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/favorites.ts` 작성 완료. `getFavoriteIds`/`isFavorite`/`addFavorite`(중복 방지)/`removeFavorite`/`toggleFavorite`를 `localStorage`(`free-traveler:favorites` 키)로만 구현했다. 서버 전송 코드 없음. Private 모드 등 접근 차단 환경에서는 예외를 던지지 않고 빈 목록으로 동작한다.
 
 ---
 
