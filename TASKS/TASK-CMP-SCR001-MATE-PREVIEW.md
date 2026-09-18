@@ -4,8 +4,11 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 9
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-001/MatePreview.tsx`(async Server Component) 작성 완료. `listMatePosts({status:"RECRUITING"})` 호출 후 `effectiveStatus`(배치 없는 자동 마감 계산, REQ-FUNC-037)까지 확인해 실제 모집 중인 글만 최신 3개 표시, 0건이면 완성형 Empty State(사유+이용 방법+"동행글 작성하기"→`/travel-tools`) 표시. "동행 더 보기" → `/mates`. Supabase 호출 실패 시에도 예외를 던지지 않고 Empty State로 대체한다(Section 자체가 깨지지 않게).
+>
+> **검증 한계**: 아직 어떤 Page에도 연결되지 않아 실제 Supabase 데이터로 렌더링해보지 못했다 — `PAGE-SCR001` 조립 후 Browser Checkpoint에서 실제 데이터(현재는 `DB-SEED-BASE`를 실제 프로젝트에 적용하지 않았으므로 빈 목록 → Empty State가 나오는 것이 정상)를 확인해야 한다.
 
 ---
 
