@@ -79,11 +79,11 @@
         "CMP-SCR001-SAFETY-PANEL",
         "PAGE-SCR001"
       ],
-      "status": "blocked",
+      "status": "completed",
       "checkpoint_required": true,
-      "checkpoint_result": null,
-      "last_completed_task": "CMP-SCR001-SAFETY-PANEL",
-      "note": "/prepare-task W05 PAGE-SCR001 -> BLOCKED_DIRTY_TREE(예상): CMP-SCR001-SAFETY-PANEL 구현 결과(src/components/scr-001/SafetyGrid.tsx, SafetyDrawer.tsx 신규, TASKS/TASK-CMP-SCR001-SAFETY-PANEL.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W05 --resume으로 이어간다."
+      "checkpoint_result": "confirmed",
+      "last_completed_task": "PAGE-SCR001",
+      "note": "Browser Checkpoint 사람 확인 완료(/run-wave W05 --resume). 알려진 미해결 항목: '여행 동기 Chip(6)' Section용 Component Task 없음(추가 필요), 여행지/안전정보 카드 클릭 시 Drawer 미연동(별도 Task 필요)."
     },
     {
       "wave_id": "W06",

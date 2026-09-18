@@ -4,8 +4,16 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 1
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/app/page.tsx` 조립 완료. Next.js 기본 Starter 화면(로고·"Get started by editing" 문구·기본 링크)을 완전히 제거하고 Header → HeroSearch → DestinationGrid(Suspense) → SafetyGrid → MatePreview(Suspense) → AboutSummary → Footer 순서로 교체했다. `getScreenMetadata("/")`로 title/description/canonical/OG/Twitter 메타데이터를 채웠다. `npm run build` PASS(`/` 동적 라우트), `npm run dev`로 실제 기동해 HTTP 200과 각 Section 텍스트("국내 여행지"/"해외 여행지"/"국가별 주의사항"/"여행 준비 시작하기"/"최근 동행글"/"free_traveler"/"대표 소개 더 보기")가 실제 렌더링됨을 확인했다.
+>
+> **조립 중 발견해 사람 확인을 거친 두 가지 이슈**:
+> 1. **빌드 실패 → 최소 수정**: `DestinationGrid`/`SafetyGrid`가 `onSelectDestination`/`onSelectCountry`를 필수 prop으로 요구해, Server Component인 `page.tsx`에서 렌더링 시 `npm run build`가 "Event handlers cannot be passed to Client Component props" 오류로 실패했다(RSC 직렬화 제약 — Server Component는 Client Component에 함수를 prop으로 전달할 수 없다). 사람 확인 후 두 Component의 해당 prop을 optional로 변경하고(`SafetyGrid.tsx`에는 빠져 있던 `"use client"`도 추가), `?.()` 호출로 바꿨다 — 이 Task의 Expected Files 밖(`CMP-SCR001-DESTINATIONS`/`CMP-SCR001-SAFETY-PANEL`의 파일)이지만 다른 방법으로는 화면 자체를 렌더링할 수 없어 최소한으로 수정했다.
+> 2. **상세 Drawer 미연동(사람 확인 후 이번 Task 범위 제외)**: 여행지 카드/안전정보 카드를 클릭해도 `DestinationDrawer`/`SafetyDrawer`가 열리지 않는다. Server Component인 `page.tsx`가 Client 상태(어떤 Drawer가 열려 있는지)를 관리할 콜백을 전달할 수 없고, 이를 위한 새 Client Wrapper Component를 Page Owner가 만드는 것은 규칙상 금지되어 있다. 실제 연동을 위해서는 별도 Task(예: 새 Client Wrapper Component)가 필요하다.
+> 3. **"여행 동기 Chip(6)" Section 누락**: Functional AC가 요구하는 7개 Section 중 "여행 동기 Chip(6)"에 대응하는 Component Task가 Wave 계획에 전혀 없다(`CMP-SCR001-*` 5개 중 어디에도 포함되지 않음). Page Owner는 새 Component를 만들 수 없어 이 Section은 조립하지 못했다 — 새 Component Task를 추가해야 한다.
+
+> **Browser Checkpoint 필요**: 위 3가지를 포함해 실제 화면을 사람이 직접 확인해야 한다(로컬 `npm run dev` 또는 Vercel Preview).
 
 ---
 

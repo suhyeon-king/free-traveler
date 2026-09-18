@@ -1,9 +1,16 @@
+"use client";
+
 import { COUNTRY_SAFETY, isSafetyStale } from "@/data/safety";
 
 const CARDS_COUNT = 6;
 
 interface SafetyGridProps {
-  onSelectCountry: (countrySlug: string) => void;
+  /**
+   * 카드 클릭 시 호출한다. Optional — Server Component(`PAGE-SCR001`)는 Client
+   * Component에 함수를 prop으로 전달할 수 없어(RSC 직렬화 제약) 생략하고 렌더링할
+   * 수 있어야 한다. 생략되면 클릭해도 아무 동작을 하지 않는다.
+   */
+  onSelectCountry?: (countrySlug: string) => void;
 }
 
 /**
@@ -29,7 +36,7 @@ export function SafetyGrid({ onSelectCountry }: SafetyGridProps) {
             <li key={country.countrySlug} className="list-none">
               <button
                 type="button"
-                onClick={() => onSelectCountry(country.countrySlug)}
+                onClick={() => onSelectCountry?.(country.countrySlug)}
                 className="block w-full rounded-[16px] border border-[#E4E1DC] p-4 text-left"
               >
                 <span className="text-[18px] font-semibold text-[#2B2A28]">

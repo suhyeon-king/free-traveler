@@ -21,7 +21,13 @@ const OVERSEAS_COUNTRIES = Array.from(
 const SEASON_KEYWORDS = ["봄", "여름", "가을", "겨울", "건기", "우기"];
 
 interface DestinationGridProps {
-  onSelectDestination: (destinationId: string) => void;
+  /**
+   * 카드 클릭 시 호출한다. Optional — Server Component(`PAGE-SCR001`)는 Client
+   * Component에 함수를 prop으로 전달할 수 없어(RSC 직렬화 제약) 생략하고 렌더링할
+   * 수 있어야 한다. 생략되면 클릭해도 아무 동작을 하지 않는다(상세 Drawer 연동은
+   * 별도 후속 작업 필요 — PAGE-SCR001 Task Status 참고).
+   */
+  onSelectDestination?: (destinationId: string) => void;
 }
 
 function matchesQuery(destination: Destination, query: string): boolean {
@@ -119,7 +125,7 @@ export function DestinationGrid({ onSelectDestination }: DestinationGridProps) {
         <div className="overflow-hidden rounded-[16px] border border-[#E4E1DC]">
           <button
             type="button"
-            onClick={() => onSelectDestination(destination.id)}
+            onClick={() => onSelectDestination?.(destination.id)}
             className={`${FOCUS_RING_CLASS_NAME} block w-full text-left`}
           >
             <div className="relative h-40 w-full">
