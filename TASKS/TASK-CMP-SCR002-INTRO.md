@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 12
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-002/Intro.tsx` 작성 완료. `representative.ts`의 소개문+철학 2개 문단을 표시한다("2~4개" 범위 충족). **참고**: 데이터 소스에 "자기소개/시작 계기/철학/편집 원칙" 4단계로 분리된 별도 텍스트가 없어(intro/philosophy 2개 상수만 존재) 2개 문단으로 구성했다.
 
 ---
 

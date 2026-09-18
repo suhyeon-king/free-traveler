@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 11
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-002/HeroStats.tsx` 작성 완료. 대표 사진+한 문장 소개+3개 지표 카드(`50+ Trips`/`30+ Countries`/권역 수)를 `representative.ts` 값만으로 렌더링. 권역 수는 데이터에 없는 필드라 이 Component 내부의 로컬 국가→권역 매핑(PRD의 "아시아/유럽/북미/오세아니아" 서술 기준)으로 계산했다(4개 권역). Hero 최소 높이 420px(Desktop 480px)로 다음 Section이 보인다.
 
 ---
 
