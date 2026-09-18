@@ -4,8 +4,12 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 17
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-003/FlightTab.tsx` 작성 완료. 국가 변경 시 지역 재계산/초기화, 과거일·역전 날짜 차단(HTML `min` 속성 + JS 검증 이중 방어), 요약 단계(비전달 고지+공식 판단 대체 불가 고지), "항공편 보러 가기"(`openOutboundLink`), URL 미설정/허용목록 밖이면 오류+재시도 UI, Tip 3개(가로 스크롤). 국가·지역·날짜는 React 상태로만 유지하고 어디로도 전송하지 않는다.
+>
+> **설계 판단**: `outboundUrl`은 이 Component가 직접 조회하지 않고 **prop으로 받는다** — `FLIGHT_OUTBOUND_URL`은 `NEXT_PUBLIC_` 없는 서버 전용 환경변수라 Client Component에서 읽을 수 없고, `app_settings` 조회도 서버 전용(RLS/Server Client) 작업이라 Client Component 안에서 할 수 없다(SCR-001 조립 때 겪은 RSC 직렬화 제약과 동일한 이유). 실제 값 연결은 `PAGE-SCR003`이 서버에서 `getAppSetting("flight_outbound_url")` 또는 환경변수를 미리 읽어 문자열로 전달해야 한다.
+> 국가·지역 목록은 이 Component 내부의 로컬 데이터(다른 Task 소유 파일을 건드리지 않기 위함)로, 11개국 예시만 포함한다(전체 국가 목록은 아님).
 
 ---
 
