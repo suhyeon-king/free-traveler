@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 40
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/share.ts` 작성 완료. `shareLink()`가 Web Share API를 우선 시도하고(사용자 취소는 실패로 취급하지 않음), 미지원·실패 시 클립보드 복사로 폴백한다. 둘 다 불가능하면 `{ method: "failed" }`를 반환해 호출자(Component)가 오류 UI를 표시할 수 있게 한다.
 
 ---
 
