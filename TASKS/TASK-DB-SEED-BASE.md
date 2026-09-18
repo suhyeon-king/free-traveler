@@ -4,8 +4,11 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 47
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `supabase/seed.sql` 작성 완료. 더미 `auth.users` 3명(일반 2명+`app_metadata.role: admin` 1명) + `profiles`/`mate_posts`(정상 1건+마감 표시 테스트용 1건)/`mate_applications`/`reports` 각 1건 + `app_settings` 2건(항공/숙소 URL) 샘플 데이터. 실제 개인정보 없음.
+>
+> **적용 여부**: 이 파일은 "로컬 개발용" 목적이 명시되어 있어, 앞서 실제 적용한 `DB-SCHEMA-BASE`/`DB-RLS-BASE`와 달리 **실제 배포 프로젝트(free-traveler)에는 적용하지 않았다.** `auth.users`에 더미 계정을 직접 INSERT하는 것은 로컬(Docker) Supabase 환경을 전제로 한 것이며, 실제 클라우드 프로젝트의 인증 테이블에 가짜 사용자를 심는 것은 이번 요청(스키마·RLS 적용)의 범위를 벗어난다고 판단해 먼저 확인이 필요하다.
 
 ---
 
