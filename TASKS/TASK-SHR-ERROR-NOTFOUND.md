@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 35
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/shared/ErrorState.tsx`(홈/이전/재시도 중 최소 1개를 튜플 타입으로 강제), `src/app/not-found.tsx`(홈+이전 복구 행동) 작성 완료. `npm run build` 결과 `/_not-found` 라우트가 정적으로 정상 생성됨을 확인했다.
 
 ---
 
