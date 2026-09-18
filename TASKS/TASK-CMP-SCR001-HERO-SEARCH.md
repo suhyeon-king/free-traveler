@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 6
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-001/HeroSearch.tsx` 작성 완료. 클라이언트 측 한글 부분 일치로 `DESTINATIONS`+`COUNTRY_SAFETY`를 통합 검색하고 결과에 "여행지"/"안전정보" 유형 라벨을 표시한다. `rounded.pill` 검색창, Hero 최소 높이 520px(Desktop 560px). "여행 준비 시작하기" CTA → `/travel-tools`(E2E-001과 동일 문구/링크). 검색어는 전적으로 클라이언트 메모리에만 있고 어디로도 전송하지 않는다. `onSelectDestination`/`onSelectSafety` 콜백은 옵션이며 Page Owner가 실제 Drawer 상태에 연결해야 한다.
 
 ---
 
