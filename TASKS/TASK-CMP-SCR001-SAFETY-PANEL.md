@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 8
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-001/SafetyGrid.tsx`(6개 카드+stale 배지), `src/components/scr-001/SafetyDrawer.tsx`(8개 카테고리, 출처/최종 확인일/편집자, 외교부 링크 새 탭+`noopener,noreferrer`, stale 경고 텍스트, 공식 판단 대체 불가 고지) 작성 완료. `isSafetyStale()`을 렌더링 시점에 호출해 배치 작업 없이 계산한다(REQ-FUNC-050).
+>
+> **간소화/한계 공개**: `src/data/safety.ts`(다른 완료된 Task) 스키마에 중대 경보 단계·지역별 범위 필드가 없어, REQ-FUNC-051(중대 경보 상단 텍스트)은 표시할 데이터가 없어 구현하지 못했고, REQ-FUNC-052(국가/지역 범위 구분)는 항상 "국가 전체"로만 표시한다. 실제 경보 단계·지역 데이터가 추가되면 이 Drawer를 갱신해야 한다. REQ-FUNC-054의 "공식 판단 대체 불가 고지" 문구는 이 Drawer에 하드코딩했으며, `CMP-SCR003-FLIGHT-FORM`(항공 요약)에서 재사용하려면 그 Task에서 동일 문구를 다시 작성해야 한다(공유 상수 파일이 Expected Files 밖).
 
 ---
 

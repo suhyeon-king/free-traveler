@@ -82,8 +82,8 @@
       "status": "blocked",
       "checkpoint_required": true,
       "checkpoint_result": null,
-      "last_completed_task": "CMP-SCR001-MATE-PREVIEW",
-      "note": "/prepare-task W05 CMP-SCR001-SAFETY-PANEL -> BLOCKED_DIRTY_TREE(예상): CMP-SCR001-MATE-PREVIEW 구현 결과(src/components/scr-001/MatePreview.tsx 신규, TASKS/TASK-CMP-SCR001-MATE-PREVIEW.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W05 --resume으로 이어간다."
+      "last_completed_task": "CMP-SCR001-SAFETY-PANEL",
+      "note": "/prepare-task W05 PAGE-SCR001 -> BLOCKED_DIRTY_TREE(예상): CMP-SCR001-SAFETY-PANEL 구현 결과(src/components/scr-001/SafetyGrid.tsx, SafetyDrawer.tsx 신규, TASKS/TASK-CMP-SCR001-SAFETY-PANEL.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W05 --resume으로 이어간다."
     },
     {
       "wave_id": "W06",
