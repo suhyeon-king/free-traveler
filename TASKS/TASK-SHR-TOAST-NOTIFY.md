@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 34
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/shared/Toast.tsx` 작성 완료. `ToastProvider`+`useToast()` Context 패턴으로 구현했으며, `showToast(message, durationMs?)` 호출 시 3~5초 범위로 clamp된 시간 동안 노출 후 자동 소멸한다(기본 4초). `colors.ink` 배경·`rounded.sm`(10px)·단일 그림자 톤을 디자인 값 그대로 적용했고 `aria-live="polite"`(SHR-A11Y-FOCUS의 `getAlertAriaProps` 재사용)로 스크린리더에도 알린다. Provider는 이 Task 범위에서 실제 App에 아직 연결하지 않았다 — Page Owner 또는 최상위 `layout.tsx`에서 감싸는 작업은 후속이다.
 
 ---
 
