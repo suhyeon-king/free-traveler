@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 44
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `supabase/migrations/0001_schema.sql` 작성 완료. 정확히 6개 테이블(`profiles`, `mate_posts`, `mate_applications`, `user_blocks`, `reports`, `app_settings`)만 생성한다. `profiles`는 `is_adult`/`adult_verified_at`만 저장(생년월일 미저장), `app_settings`는 Key를 `flight_outbound_url`/`hotel_outbound_url`로 제한하고 값이 `https://`로 시작하도록 CHECK 제약을 걸었다(REQ-FUNC-077). `mate_applications`는 부분 유니크 인덱스로 동일 글 중복 PENDING/ACCEPTED 요청을 DB 레벨에서 차단한다.
+>
+> **검증 한계(정직하게 공개)**: 실제 Supabase 프로젝트가 아직 없어(`docs/PROJECT_STATE.md`) 이 SQL을 실행해 검증하지 못했다. `psql`/`psycopg2` 등 로컬 Postgres 클라이언트도 없어 수동 코드 리뷰(문법·제약조건 재확인)만 수행했다. 실제 실행 검증은 Supabase 프로젝트 생성 후(`SUPABASE-ENV-VERIFY`) 수행해야 한다.
 
 ---
 
