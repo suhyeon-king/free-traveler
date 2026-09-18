@@ -115,7 +115,7 @@
       "status": "in_progress",
       "checkpoint_required": true,
       "checkpoint_result": null,
-      "last_completed_task": "CMP-SCR003-HOTEL-FORM",
+      "last_completed_task": "CMP-SCR003-MATE-WRITE",
       "note": null
     },
     {

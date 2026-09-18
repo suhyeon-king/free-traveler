@@ -4,8 +4,14 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 19
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-003/MateWriteTab.tsx` 작성 완료. `user`가 `null`(비로그인) 또는 `isAdult:false`(성인 미확인)면 "로그인/가입하기"(`/account`) 안내 카드를, 아니면 작성 Form(제목/국가/지역/기간/인원/스타일/설명)을 보여준다. `detectContactInfo()`(전화번호/이메일/메신저 ID 정규식, `export`해 `UNIT-CONTACT-DETECTION`이 재사용 가능)로 제목·설명을 검사해 탐지 시 제출을 막는다. 안전수칙 동의 체크 전엔 제출 버튼이 비활성화된다. 제출 성공 시 `/mates/<postId>`로 이동.
+>
+> **설계 판단 및 한계**:
+> 1. Client Component는 `db/mates.ts`(서버 전용, `cookies()` 사용)를 직접 호출할 수 없어 `onSubmit`을 Server Action prop으로 받는다 — `PAGE-SCR003`이 `createMatePost`를 감싼 Server Action을 만들어 전달해야 한다.
+> 2. REQ-FUNC-080의 "정책 버전·동의 시각 저장"은 `mate_posts` 스키마(다른 완료된 Task 소유)에 해당 컬럼이 없어 저장 로직을 구현하지 못했다 — 체크박스로 동의만 받고 있으며, 저장이 필요하면 스키마 확장이 먼저 필요하다.
+> 3. REQ-FUNC-029(닉네임/연령대/여행스타일 필수 프로필 폼)는 `CMP-SCR005-PROFILE` 소관으로 판단해 여기서는 구현하지 않았다.
 
 ---
 
