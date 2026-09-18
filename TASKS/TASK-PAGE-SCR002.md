@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 2
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/app/about/page.tsx` 조립 완료. Header → HeroStats → Intro → Timeline → CountryChips → Gallery → MemorableCta → Footer 순서로 조립했다. `getScreenMetadata("/about")`로 메타데이터 적용. 모든 하위 Component가 Server Component라 SCR-001에서 겪었던 RSC 콜백 직렬화 문제는 없었다. `npm run build` PASS(`/about` 정적 라우트), `npm run dev` 실행 후 HTTP 200 + 모든 Section 텍스트("50+ Trips"/"30+ Countries"/"여행 Timeline"/"방문 국가"/"여행 Gallery"/"기억에 남는 여행지"/"여행 준비 시작하기"/"동행 찾아보기") 실제 렌더링 확인.
 
 ---
 
