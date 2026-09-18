@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 14
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-002/CountryChips.tsx` 작성 완료. 32개국(30개국 이상 충족)을 4개 권역(아시아/유럽/북미/오세아니아)으로 그룹화, Mobile 가로 스크롤. 각 Chip은 `/?country=<국가명>`으로 이동해 `CMP-SCR001-DESTINATIONS`가 이미 읽는 필터 파라미터를 재사용, 실제로 해당 국가로 필터링된 SCR-001 여행지 목록을 보여준다(대한민국은 홈으로만 이동). 모든 링크가 실제 존재하는 Route(`/`)만 가리켜 연결 오류 0건이다.
 
 ---
 

@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT(간소화)
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 15
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-002/Gallery.tsx` 작성 완료. `REPRESENTATIVE_GALLERY` 8장을 Mobile 2열/Desktop 4열 그리드로 표시, 각 사진에 장소 설명 alt + 출처(자체 촬영 표기) 캡션. 이미지 실제 파일은 아직 없다(기존에 공개된 제약, `DATA-REPRESENTATIVE` 소관).
 
 ---
 
