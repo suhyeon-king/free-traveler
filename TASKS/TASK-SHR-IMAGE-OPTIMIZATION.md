@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 38
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/shared/OptimizedImage.tsx` 작성 완료. `next/image` 래퍼로 `isPriority`가 아니면 항상 `loading="lazy"`, `isPriority=true`면 `priority`(LCP 후보용)를 적용한다. 반응형 `sizes` 기본값을 제공하고 필요 시 override 가능하다.
 
 ---
 
