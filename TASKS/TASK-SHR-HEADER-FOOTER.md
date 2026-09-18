@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 30
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/shared/Header.tsx`, `src/components/shared/Footer.tsx` 작성 완료. Header는 Desktop 72px/Mobile 56px, 4개 핵심 내비게이션(메인/여행 준비/동행 찾기/대표 소개)+계정 진입점, Mobile은 로고+햄버거→`SHR-DRAWER-MODAL`의 Modal 시트. Footer는 Desktop 3열(서비스/회사/정책)→Mobile 1열, legal band에 저작권+비대행 고지 포함. **설계 판단**: `SCREEN_ROUTE_CONTRACT.json`에 이용약관·개인정보처리방침 등 별도 정책 Route가 없어(REQ-FUNC-080 콘텐츠는 `CMP-SCR003-MATE-WRITE`의 동의 흐름이 담당) 새 Route를 만들지 않고 정책 링크는 Modal로 본문을 보여준다(CLAUDE.md 규칙 5). 로그인 상태(`userNickname` prop)는 `INFRA-AUTH`(W04)가 아직 구현 전이라 Page Owner가 실제 세션 값을 연결하기 전까지는 Guest("로그인")로 표시된다. `npm run build` PASS.
 
 ---
 
