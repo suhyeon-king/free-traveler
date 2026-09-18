@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 10
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-001/AboutSummary.tsx` 작성 완료. `src/data/representative.ts` 하나만 참조해 대표명·`50+ Trips`·`30+ Countries`를 표시하므로 `/about`과 항상 같은 값을 보여준다(REQ-FUNC-057). 좌(이미지)/우(텍스트+CTA) 분할, "대표 소개 더 보기" → `/about` 링크. 이미지는 `REPRESENTATIVE_GALLERY[0]`을 사용하며 실제 파일은 아직 없다(기존에 공개된 제약).
 
 ---
 
