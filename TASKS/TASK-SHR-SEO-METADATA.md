@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 37
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/seo.ts` 작성 완료. `buildPageMetadata()`(범용 title/description/canonical/OG/Twitter Card 생성)와 `getScreenMetadata(path)`(5개 Screen 경로별 고유 title/description 사전 등록, 미등록 경로는 예외로 콘텐츠 누락을 조기에 드러냄) 제공. `NEXT_PUBLIC_SITE_URL` 미설정 시 `http://localhost:3000`으로 대체하며, 실제 배포 도메인은 `DEPLOY-VERCEL-SETUP`(W12) 몫이다. OG 기본 이미지(`/og-default.png`)는 실제 파일이 아직 없어 콘텐츠 검수 단계에서 채워야 한다.
 
 ---
 

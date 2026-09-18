@@ -49,8 +49,8 @@
       "status": "blocked",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "SHR-RESPONSIVE-LAYOUT",
-      "note": "/prepare-task W03 SHR-SEO-METADATA -> BLOCKED_DIRTY_TREE(예상): SHR-RESPONSIVE-LAYOUT 구현 결과(tailwind.config.ts 신규, src/app/globals.css 수정, TASKS/TASK-SHR-RESPONSIVE-LAYOUT.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W03 --resume으로 이어간다."
+      "last_completed_task": "SHR-SEO-METADATA",
+      "note": "/prepare-task W03 SHR-SHARE-LINK -> BLOCKED_DIRTY_TREE(예상): SHR-SEO-METADATA 구현 결과(src/lib/seo.ts 신규, TASKS/TASK-SHR-SEO-METADATA.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W03 --resume으로 이어간다."
     },
     {
       "wave_id": "W04",
