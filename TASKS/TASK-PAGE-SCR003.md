@@ -4,8 +4,13 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 3
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/app/travel-tools/page.tsx` 조립 완료. Header → Intro → 탭(항공편/숙소/동행 구하기) → Footer. 세 탭 Component(`FlightTab`/`HotelTab`/`MateWriteTab`)를 항상 함께 마운트하고 순수 CSS(라디오 입력+형제 선택자)로만 노출을 전환해, 탭을 바꿔도 각 탭의 React 상태(입력값)가 유지된다. `outboundUrl`은 `getAppSetting()`(app_settings) 우선, 실패 시 환경변수로 대체해 서버에서 해석 후 각 탭에 prop으로 전달했다. 동행글 작성은 Server Action(`createMatePostAction`, 연락처 탐지 서버측 재검증 포함)으로 연결했고, `mateWriteUser`는 `getServerUser()`+`profiles.is_adult` 조회로 해석해 전달했다. `npm run build` PASS(`/travel-tools` 동적 라우트), `npm run dev` 실행 후 HTTP 200 + 모든 Section 텍스트(탭 3개, 비전달 고지, 로그인/가입하기 안내 — 비로그인 상태라 정상) 확인.
+>
+> **간소화/한계 공개**:
+> 1. Page Owner는 새 Client Wrapper Component를 만들 수 없어(규칙 9) 탭 전환을 CSS로만 구현했다. `role="tab"`의 JS 기반 `aria-selected`/roving tabindex(`SHR-A11Y-FOCUS`)는 적용하지 못했다 — 라디오 그룹 자체는 키보드로 조작 가능하지만 정확한 ARIA Tab 패턴은 아니다.
+> 2. `profiles.is_adult` 조회는 `db/mates.ts`(DB-ACCESS)에 해당 함수가 없어 이 파일 안에서 Supabase Client로 직접 조회했다(별도 Task 없는 작은 glue 코드로 판단).
 
 ---
 
