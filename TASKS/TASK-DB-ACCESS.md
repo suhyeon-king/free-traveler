@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 46
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/db/mates.ts`(모집글 CRUD+필터, 참가 요청 CRUD, `hasAcceptedApplicants`로 마감 전 경고 지원, 차단 CRUD, `effectiveStatus`로 배치 없이 자동 마감 계산), `src/lib/db/reports.ts`(신고 생성/조회/상태 변경), `src/lib/db/admin.ts`(`app_settings` 조회/저장, `INFRA-OUTBOUND-LINKS`의 `validateOutboundUrl` 재사용해 저장 전 HTTPS 검증) 작성 완료. 모든 select는 이메일/연락처 컬럼을 포함하지 않는다(REQ-FUNC-033 — `profiles`/`auth.users`의 이메일을 조회하지 않음). 모든 함수는 `INFRA-AUTH`의 Server Supabase Client를 사용해 RLS가 적용된 세션으로만 동작한다. `npm run build` PASS.
+>
+> **검증 한계**: 실제 데이터로 이 함수들을 호출해 통합 테스트하지는 않았다(호출할 UI/Server Action이 아직 없음). `p95 ≤3s` 응답 시간(REQ-NF-005/019)은 실측하지 않았다 — 실제 측정은 `UNIT-MATE-STATE`/`TEST-RLS-BASIC`, 그리고 UI 완성 후 수동 측정으로 이뤄져야 한다.
 
 ---
 
