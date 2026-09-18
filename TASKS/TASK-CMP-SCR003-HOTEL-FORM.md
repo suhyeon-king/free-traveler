@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 18
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-003/HotelTab.tsx` 작성 완료. `FlightTab.tsx`와 동일한 구조로 국가/지역/체크인/체크아웃 입력+검증(체크아웃≤체크인 차단), 요약(비전달 고지), "숙소 보러 가기", URL 미설정 시 오류+재시도, Tip 3개. `outboundUrl`도 동일한 이유로 prop으로 받는다(서버 전용 값, RSC 직렬화 제약).
 
 ---
 
