@@ -4,8 +4,9 @@
 - **Priority:** P2
 - **Implementation Status:** IMPLEMENT(간소화)
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 16
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-002/MemorableCta.tsx` 작성 완료. `getRecommendedDestinations()`(비공개/삭제 ID 자동 제외 이미 적용됨) 결과를 카드로 표시하고 `/?destination=<id>`로 이동(SCR-001 Drawer 자동 오픈은 `PAGE-SCR001`에서 이미 공개한 한계와 동일하게 아직 미연동). 하단 "여행 준비 시작하기"(`/travel-tools`)/"동행 찾아보기"(`/mates`) CTA. 문의·SNS 링크는 값이 없으면 렌더링하지 않고, `https:`/`mailto:` 외 프로토콜(예: `javascript:`)은 로컬 검증으로 차단한다.
 
 ---
 

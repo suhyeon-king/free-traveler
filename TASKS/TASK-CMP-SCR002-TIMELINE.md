@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 13
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-002/Timeline.tsx` 작성 완료. 7개 항목(6개 이상 충족), Desktop 좌우 교차(`md:flex-row-reverse`)/Mobile 좌측 고정 1열. **참고**: `representative.ts`의 `TimelineEntry`에는 사진 필드가 없어(다른 완료된 Task 소유), 촬영 연도가 일치하는 `REPRESENTATIVE_GALLERY` 항목을 찾아 짝지었다(연도 표기가 `(YYYY)` 형식으로 attribution에 있어 7개 중 7개 모두 매칭됨).
 
 ---
 
