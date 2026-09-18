@@ -10,13 +10,39 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Radius (REQ-FUNC-065, design-reference/D-001/DESIGN.md Radius 표) */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+
+  /*
+   * Breakpoint — Tailwind 기본 breakpoint(sm 640/md 768/lg 1024/xl 1280/2xl 1536)를
+   * 그대로 사용한다. md(768px)가 디자인의 Tablet 보간 구간(744~1128px) 하단과 거의
+   * 일치해 실질적인 Mobile/Desktop 전환 기준(`md:` prefix)으로 이미 여러 공용
+   * Component(Header/Footer/Drawer/Modal 등)가 이를 사용하고 있다. Desktop 1440px
+   * 전용 미세 조정이 필요할 때만 아래 breakpoint를 추가로 사용한다.
+   */
+  --breakpoint-desktop: 1440px;
 }
+
+/*
+ * Spacing — 별도 Named 토큰을 추가하지 않고 Tailwind 기본 4px 배수 스케일을 그대로
+ * 사용한다. design-reference/D-001/DESIGN.md의 spacing 토큰과 1:1로 대응한다:
+ * xs(4px)=p-1, sm(8px)=p-2, md(12px)=p-3, base(16px)=p-4, lg(24px)=p-6,
+ * xl(32px)=p-8, xxl(48px)=p-12.
+ */
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+html {
+  /* Visual AC: 320px~Desktop까지 가로 스크롤·겹침이 발생하지 않게 한다(REQ-FUNC-065). */
+  overflow-x: hidden;
 }
 
 body {

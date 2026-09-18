@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 31
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tailwind.config.ts`(Content 경로 고정, Tailwind v4는 CSS-first라 이론적 정본은 `globals.css`), `src/app/globals.css`(Radius 토큰 `radius-sm/md/pill`, `--breakpoint-desktop: 1440px` 추가, `overflow-x: hidden`으로 가로 스크롤 방지) 작성 완료. Spacing은 Tailwind 기본 4px 배수 스케일이 디자인 Spacing 토큰과 1:1 대응해 별도 토큰을 추가하지 않고 주석으로 대응 관계만 문서화했다. **Color Token은 이 Task의 Functional AC/Design Ref 범위(breakpoint·spacing·radius만 명시)에 포함되지 않아 다루지 않았다** — 기존 Component들의 색상 임의값(`#F0653C` 등)은 그대로 유지된다. `npm run build` PASS.
+
+> **알아둘 점**: `package.json`의 `format:check` glob 목록에 `tailwind.config.ts`가 포함되어 있지 않아(이전 세션에 작성된 스크립트라 이 파일의 존재를 몰랐음) CI에서 이 파일의 포맷을 검증하지 못한다. `package.json`은 이 Task의 Expected Files 밖이라 직접 수정하지 않았다 — 필요하면 별도로 확인 후 glob을 추가해야 한다.
 
 ---
 
