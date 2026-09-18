@@ -65,8 +65,8 @@
       "status": "blocked",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "DB-SCHEMA-BASE",
-      "note": "/prepare-task W04 DB-RLS-BASE -> BLOCKED_DIRTY_TREE(예상): DB-SCHEMA-BASE 구현 결과(supabase/migrations/0001_schema.sql 신규, TASKS/TASK-DB-SCHEMA-BASE.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W04 --resume으로 이어간다."
+      "last_completed_task": "DB-RLS-BASE",
+      "note": "/prepare-task W04 DB-SEED-BASE -> BLOCKED_DIRTY_TREE(예상): DB-RLS-BASE 구현 결과(supabase/policies/rls.sql 신규, TASKS/TASK-DB-RLS-BASE.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W04 --resume으로 이어간다."
     },
     {
       "wave_id": "W05",

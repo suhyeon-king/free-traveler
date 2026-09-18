@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 45
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `supabase/policies/rls.sql` 작성 완료. 6개 테이블 전체에 RLS를 활성화했다. **설계 판단**: Admin/Moderator 판별에 `profiles`에 없는 `role` 컬럼이 필요했으나, DB-SCHEMA-BASE(이미 완료·Expected Files 밖)를 건드리지 않기 위해 새 컬럼·테이블 대신 Supabase Auth JWT의 `app_metadata.role` 클레임을 읽는 `is_admin_or_moderator()` 함수로 판별했다(6개 테이블 제한 유지). `mate_posts`는 비로그인 사용자도 조회 가능하지만 로그인 사용자에게는 상호 차단 관계를 필터링한다. `mate_applications`/`reports`는 본인·상대(글 작성자)·Admin/Moderator만 열람 가능하다. `app_settings`는 SELECT는 공개(항공/숙소 URL을 비로그인도 읽어야 함), 쓰기는 Admin/Moderator만 가능하다.
+>
+> **실제 적용 검증**: `npx supabase db query --linked -f supabase/policies/rls.sql`로 실제 프로젝트에 적용했다. `pg_policies` 조회로 6개 테이블에 정책이 정확히 생성됨을 확인했다(profiles 3, mate_posts 4, mate_applications 4, user_blocks 3, reports 3, app_settings 3). 권한별 부정 접근(403/빈 결과) 동작 자체의 통합 테스트는 `TEST-RLS-BASIC`에서 별도로 수행해야 한다 — 이 Task에서는 정책 존재·개수만 확인했다.
 
 ---
 

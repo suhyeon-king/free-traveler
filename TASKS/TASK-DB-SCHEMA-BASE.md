@@ -8,7 +8,7 @@
 
 > `supabase/migrations/0001_schema.sql` 작성 완료. 정확히 6개 테이블(`profiles`, `mate_posts`, `mate_applications`, `user_blocks`, `reports`, `app_settings`)만 생성한다. `profiles`는 `is_adult`/`adult_verified_at`만 저장(생년월일 미저장), `app_settings`는 Key를 `flight_outbound_url`/`hotel_outbound_url`로 제한하고 값이 `https://`로 시작하도록 CHECK 제약을 걸었다(REQ-FUNC-077). `mate_applications`는 부분 유니크 인덱스로 동일 글 중복 PENDING/ACCEPTED 요청을 DB 레벨에서 차단한다.
 >
-> **검증 한계(정직하게 공개)**: 실제 Supabase 프로젝트가 아직 없어(`docs/PROJECT_STATE.md`) 이 SQL을 실행해 검증하지 못했다. `psql`/`psycopg2` 등 로컬 Postgres 클라이언트도 없어 수동 코드 리뷰(문법·제약조건 재확인)만 수행했다. 실제 실행 검증은 Supabase 프로젝트 생성 후(`SUPABASE-ENV-VERIFY`) 수행해야 한다.
+> **실제 적용 검증**: 사용자가 제공한 Supabase Personal Access Token으로 `npx supabase link --project-ref hqjbycmkhwhpajvororw` → `npx supabase db push`를 실행해 실제 프로젝트(`free-traveler`, ap-northeast-1)에 이 마이그레이션을 적용했다. `information_schema.tables` 조회로 6개 테이블(`profiles`/`mate_posts`/`mate_applications`/`user_blocks`/`reports`/`app_settings`)이 정확히 생성되었음을 확인했다.
 
 ---
 
