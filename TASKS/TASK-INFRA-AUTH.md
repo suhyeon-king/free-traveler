@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 48
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/lib/auth.ts`(Browser/Server Supabase Client 팩토리, 이메일 가입/로그인/로그아웃/재설정, `getServerUser()`, `confirmAdult()`), `src/app/auth/callback/route.ts`(인증 콜백 → 세션 교환 → 리다이렉트) 작성 완료. `@supabase/supabase-js`+`@supabase/ssr` 의존성을 새로 설치했다(이 Task의 Expected Files 밖이지만 기능 구현에 반드시 필요한 의존성 추가로 판단해 진행 — `package.json`/`package-lock.json`). Server Client의 쿠키 옵션은 `INFRA-SECURITY-BASELINE`의 `SECURE_COOKIE_OPTIONS`를 재사용한다. `npm run build` PASS(`/auth/callback` 동적 라우트 생성 확인).
+>
+> **참고**: `NEXT_PUBLIC_SUPABASE_URL`/`NEXT_PUBLIC_SUPABASE_ANON_KEY`는 `.env`/`.env.local`에 실제 값이 설정되어 있어(사용자 제공) 이 코드가 실제로 동작할 준비가 되어 있다. 다만 회원가입/로그인 등 실제 인증 흐름 자체는 로컬에서 실행해 검증하지 않았다(UI가 아직 없어 수동 테스트 불가) — `CMP-SCR005-AUTH`/`E2E-MATE-AUTH`에서 실제 동작을 확인해야 한다.
 
 ---
 
