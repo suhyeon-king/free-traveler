@@ -4,8 +4,14 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT(간소화)
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 7
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-001/DestinationGrid.tsx`(국내/해외 각 6개, 검색어+해외 국가+추천 시기 필터 AND 결합, `useSearchParams`/`router.replace`로 URL 동기화, 결과 없음 시 EmptyState+초기화), `src/components/scr-001/DestinationDrawer.tsx`(소개·명소·시기·1일/3일 일정·예산·교통·음식·에티켓·출처·수정일 전부 표시, 해외는 "안전정보 보기" 버튼으로 `onOpenSafety(countrySlug)` 콜백 호출, 관련 여행지 최대 6개) 작성 완료. 즐겨찾기(`localStorage`)·공유(Web Share+클립보드 폴백) 연동.
+>
+> **간소화/한계 공개**:
+> 1. Functional AC가 요구하는 "국가·도시·계절·테마·기간" 5축 필터 중, `DATA-DESTINATIONS`(이미 완료된 다른 Task) 스키마에 `region`(도시 세분화)·`theme` 태그·`duration`(여행 기간) 필드가 없어 이 3가지는 정확히 필터링할 수 없다. 실제로 구현한 것은 검색어(도시명·명소·음식 텍스트 매칭으로 도시·테마를 대략 대체)+해외 국가+추천 시기(텍스트 포함 매칭) 3개다. 정밀한 5축 필터가 필요하면 `DATA-DESTINATIONS`의 스키마 확장이 먼저 필요하다.
+> 2. `DestinationDrawer`의 "안전정보 보기"는 실제 `SafetyDrawer`(`CMP-SCR001-SAFETY-PANEL`, 이 Wave의 다음 Task)가 아직 없어 콜백만 노출한다 — Page Owner가 두 Drawer를 연결해야 완전히 동작한다.
+> 3. `useSearchParams`를 사용하므로 Next.js 규칙상 `PAGE-SCR001`에서 `<Suspense>`로 감싸야 한다 — Page Owner가 처리해야 한다.
 
 ---
 

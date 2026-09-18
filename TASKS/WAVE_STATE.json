@@ -82,8 +82,8 @@
       "status": "blocked",
       "checkpoint_required": true,
       "checkpoint_result": null,
-      "last_completed_task": "CMP-SCR001-ABOUT-SUMMARY",
-      "note": "/prepare-task W05 CMP-SCR001-DESTINATIONS -> BLOCKED_DIRTY_TREE(예상): CMP-SCR001-ABOUT-SUMMARY 구현 결과(src/components/scr-001/AboutSummary.tsx 신규, TASKS/TASK-CMP-SCR001-ABOUT-SUMMARY.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W05 --resume으로 이어간다."
+      "last_completed_task": "CMP-SCR001-DESTINATIONS",
+      "note": "/prepare-task W05 CMP-SCR001-HERO-SEARCH -> BLOCKED_DIRTY_TREE(예상): CMP-SCR001-DESTINATIONS 구현 결과(src/components/scr-001/DestinationGrid.tsx, DestinationDrawer.tsx 신규, TASKS/TASK-CMP-SCR001-DESTINATIONS.md 수정)가 아직 커밋되지 않음. /implement-task 기본 정책상 자동 Commit하지 않으므로 사람이 Commit 여부를 결정한 뒤 /run-wave W05 --resume으로 이어간다."
     },
     {
       "wave_id": "W06",
