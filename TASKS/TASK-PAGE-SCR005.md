@@ -4,8 +4,15 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 5
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/app/account/page.tsx` 조립 완료. Guest=AuthTab만, Member=Profile+MyActivity+Auth(로그아웃), Admin=+AdminTab을 좌측 세로 탭(Desktop)/상단 가로 스크롤 탭(Mobile)으로 구성했다(PAGE-SCR003과 동일한 CSS 라디오+형제 선택자 탭 전환, Page Owner는 새 Client Wrapper를 만들 수 없음— 규칙 9). 프로필 저장/성인 확인/글 마감·삭제/참가 승인·거절/차단 해제/신고 상태 변경/외부 URL 설정은 각각 인라인 Server Action으로 연결했다. 신고 상태 필터는 `?reportStatus=` 쿼리로 서버에서 다시 읽는다.
+>
+> **실제 build 오류 발견 및 해결(사람 확인 완료)**: `AuthTab.tsx`(Client)가 `src/lib/auth.ts`를 import했는데 그 파일에 `next/headers`를 쓰는 서버 전용 코드가 섞여 있어 Client 번들 포함 시 `next build`가 실제로 실패했다. 사람에게 확인한 뒤 "새 Client 전용 파일 추가(권장)"를 선택해, `src/lib/auth-client.ts`(신규, Expected Files 밖)를 만들어 Client-safe 함수(`createBrowserSupabaseClient`/`signInWithEmail`/`signUpWithEmail`/`signOut`/`requestPasswordReset`)만 옮기고 `AuthTab.tsx`의 import만 그쪽으로 바꿨다(INFRA-AUTH의 `src/lib/auth.ts`는 건드리지 않음).
+>
+> `npm run build`(typecheck 포함) PASS(`/account` 동적 라우트), `npm run lint` PASS, `npx prettier --write` 적용 후 `npm run format:check` PASS. `npm run dev` 실행 후 `/account` HTTP 200 + Guest 모드 텍스트("계정"/"로그인"/"이메일"/"비밀번호"/"생년월일") 확인. Member/Admin 화면은 실제 로그인 세션과 `app_metadata.role`이 필요해 이번 자동 검증에서는 확인하지 못함 — Browser Checkpoint에서 사람이 실제 로그인 후 확인 필요.
+>
+> **알려진 제한사항(공개)**: (1) 프로필 저장 시 profiles 행이 없으면 upsert로 새로 만들지만, 회원가입 시 profiles 행을 자동 생성하는 트리거가 없어(스키마 Task 범위 밖) 첫 로그인 시 프로필 탭이 빈 값으로 시작한다. (2) 관리자 탭에서 신고 상태 필터를 바꾸면 페이지가 새로고침되며 CSS 탭 선택이 기본값으로 리셋되는데, `reportStatus` 쿼리 파라미터가 있으면 관리자 탭을 기본 선택으로 되돌리는 것으로 완화했으나 완전한 해결은 아니다.
 
 ---
 

@@ -9,7 +9,7 @@ import {
   signInWithEmail,
   signOut,
   signUpWithEmail,
-} from "@/lib/auth";
+} from "@/lib/auth-client";
 
 type AuthMode = "login" | "signup" | "reset";
 
