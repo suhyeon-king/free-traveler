@@ -4,9 +4,11 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 59
-- **Task Status:** BLOCKED_HUMAN_INPUT
+- **Task Status:** DONE
 
-> `docs/checklists/A11Y_MANUAL_CHECK.md` 작성 완료. 이 Task는 설계상(Category `MANUAL_CHECK`) 자동화로 대체할 수 없는 사람의 실제 브라우저 키보드/스크린리더 점검이라, 사람에게 확인한 뒤 Playwright로 키보드 이벤트(Tab/화살표/Enter)만 프로그래밍으로 보내는 **자동 사전 점검**을 수행해 포커스 이동 순서·포커스 링 유무·명백한 문제(로고 링크 포커스 스타일 누락 등)까지는 확인해 체크리스트 문서에 기록했다. 다만 스크린리더 실제 음성 출력, 로그인 세션이 필요한 흐름(신고 Modal, Admin 탭 등)은 자동으로 확인할 수 없어 **`docs/checklists/A11Y_MANUAL_CHECK.md`의 "사람 확인 필요" 절이 아직 남아 있다.** 이 항목들을 사람이 실제 브라우저에서 확인하고 체크리스트를 갱신하기 전에는 이 Task를 DONE으로 표시하지 않는다(실행하지 않은 검증을 통과로 보고하지 않는다는 원칙에 따름).
+> `docs/checklists/A11Y_MANUAL_CHECK.md` 작성 완료. 이 Task는 설계상(Category `MANUAL_CHECK`) 자동화로 대체할 수 없는 사람의 실제 브라우저 키보드/스크린리더 점검이라, Playwright로 키보드 이벤트(Tab/화살표/Enter)만 프로그래밍으로 보내는 **자동 사전 점검**을 먼저 수행해 포커스 이동 순서·포커스 링 유무·명백한 문제까지 확인해 체크리스트 문서에 기록했다. 이후 **사람이 실제 브라우저로 "사람 확인 필요" 절의 모든 항목을 확인하고 체크리스트에 체크(`[x]`)**해 최종 판정까지 완료했다.
+>
+> **사람 확인 과정에서 실제 버그 1건 발견·수정**: 메인 페이지(SCR-001) 여행지 Card의 "공유" 버튼을 눌러도 아무 반응이 없다는 것을 사람이 직접 확인해 보고했다. 원인은 `DestinationGrid.tsx`/`DestinationDrawer.tsx`(둘 다 `CMP-SCR001-DESTINATIONS`의 Expected Files, 이 Task Expected File 밖이지만 사람이 직접 지시한 버그 수정)의 `handleShare`가 `shareLink()` 결과를 버려서(`void shareLink(...)`), 데스크톱 브라우저(Web Share API 미지원)에서는 클립보드에 조용히 복사만 되고 아무 시각적 피드백이 없었던 것. `handleShare`를 `async`로 바꿔 `shareLink()` 결과를 `role="status"` 인라인 메시지("링크를 클립보드에 복사했습니다." 등)로 표시하도록 수정했다. `npm run build`/`lint`/`format:check` PASS, Playwright로 공유 버튼 클릭 후 상태 메시지 노출을 실제 확인.
 
 ---
 

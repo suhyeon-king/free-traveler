@@ -10,7 +10,7 @@ import {
 } from "@/data/destinations";
 import { FOCUS_RING_CLASS_NAME, MIN_TOUCH_TARGET_CLASS_NAME } from "@/lib/a11y";
 import { getFavoriteIds, toggleFavorite } from "@/lib/favorites";
-import { shareLink } from "@/lib/share";
+import { shareLink, type ShareLinkResult } from "@/lib/share";
 
 interface DestinationDrawerProps {
   destinationId: string | null;
@@ -34,6 +34,7 @@ export function DestinationDrawer({
   const [favoriteIds, setFavoriteIds] = useState<string[]>(() =>
     getFavoriteIds(),
   );
+  const [shareResult, setShareResult] = useState<ShareLinkResult | null>(null);
 
   const destination = destinationId
     ? getDestinationById(destinationId)
@@ -54,13 +55,14 @@ export function DestinationDrawer({
     setFavoriteIds(result.ids);
   }
 
-  function handleShare() {
+  async function handleShare() {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
-    void shareLink({
+    const result = await shareLink({
       url: `${origin}/?destination=${destination!.id}`,
       title: destination!.name,
       text: destination!.summary,
     });
+    setShareResult(result);
   }
 
   return (
@@ -103,6 +105,16 @@ export function DestinationDrawer({
             </button>
           </div>
         </div>
+
+        {shareResult ? (
+          <p role="status" className="text-[13px] text-[#6B6863]">
+            {shareResult.method === "clipboard"
+              ? "링크를 클립보드에 복사했습니다."
+              : shareResult.method === "web-share"
+                ? "공유 시트를 열었습니다."
+                : "공유에 실패했습니다. 잠시 후 다시 시도해 주세요."}
+          </p>
+        ) : null}
 
         <p className="text-[16px] leading-[1.6] text-[#2B2A28]">
           {destination.summary}

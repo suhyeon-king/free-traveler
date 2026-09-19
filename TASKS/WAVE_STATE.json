@@ -164,11 +164,11 @@
         "TEST-RLS-BASIC",
         "UNIT-CONTACT-DETECTION"
       ],
-      "status": "blocked",
+      "status": "in_progress",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "E2E-TRAVEL-TOOLS",
-      "note": "MANUAL-A11Y-KEYBOARD는 사람의 실제 브라우저 키보드/스크린리더 점검이 필요한 Category(MANUAL_CHECK)라 자동으로 DONE 처리할 수 없다. `docs/checklists/A11Y_MANUAL_CHECK.md`에 자동 사전 점검(Playwright 키보드 이벤트) 결과와 '사람 확인 필요' 체크리스트를 작성해 두었다. 사람이 그 체크리스트를 실제로 확인·완료한 뒤 TASK-MANUAL-A11Y-KEYBOARD.md의 Task Status를 DONE으로 바꾸면 `/run-wave W10 --resume`으로 TEST-RLS-BASIC부터 이어서 진행한다."
+      "last_completed_task": "MANUAL-A11Y-KEYBOARD",
+      "note": null
     },
     {
       "wave_id": "W11",

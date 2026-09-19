@@ -12,7 +12,7 @@ import {
 } from "@/data/destinations";
 import { FOCUS_RING_CLASS_NAME, MIN_TOUCH_TARGET_CLASS_NAME } from "@/lib/a11y";
 import { getFavoriteIds, toggleFavorite } from "@/lib/favorites";
-import { shareLink } from "@/lib/share";
+import { shareLink, type ShareLinkResult } from "@/lib/share";
 
 const CARDS_PER_SECTION = 6;
 const OVERSEAS_COUNTRIES = Array.from(
@@ -63,6 +63,10 @@ export function DestinationGrid({ onSelectDestination }: DestinationGridProps) {
   const [favoriteIds, setFavoriteIds] = useState<string[]>(() =>
     getFavoriteIds(),
   );
+  const [shareStatus, setShareStatus] = useState<{
+    destinationId: string;
+    result: ShareLinkResult;
+  } | null>(null);
 
   function updateFilters(next: {
     q?: string;
@@ -109,13 +113,14 @@ export function DestinationGrid({ onSelectDestination }: DestinationGridProps) {
     setFavoriteIds(result.ids);
   }
 
-  function handleShare(destination: Destination) {
+  async function handleShare(destination: Destination) {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
-    void shareLink({
+    const result = await shareLink({
       url: `${origin}/?destination=${destination.id}`,
       title: destination.name,
       text: destination.summary,
     });
+    setShareStatus({ destinationId: destination.id, result });
   }
 
   function renderCard(destination: Destination) {
@@ -165,6 +170,15 @@ export function DestinationGrid({ onSelectDestination }: DestinationGridProps) {
               공유
             </button>
           </div>
+          {shareStatus?.destinationId === destination.id ? (
+            <p role="status" className="px-4 pb-3 text-[13px] text-[#6B6863]">
+              {shareStatus.result.method === "clipboard"
+                ? "링크를 클립보드에 복사했습니다."
+                : shareStatus.result.method === "web-share"
+                  ? "공유 시트를 열었습니다."
+                  : "공유에 실패했습니다. 잠시 후 다시 시도해 주세요."}
+            </p>
+          ) : null}
         </div>
       </li>
     );
