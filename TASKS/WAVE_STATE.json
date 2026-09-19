@@ -146,11 +146,11 @@
         "CMP-SCR005-PROFILE",
         "PAGE-SCR005"
       ],
-      "status": "awaiting_browser_checkpoint",
+      "status": "completed",
       "checkpoint_required": true,
-      "checkpoint_result": null,
+      "checkpoint_result": "confirmed",
       "last_completed_task": "PAGE-SCR005",
-      "note": "PAGE-SCR005 조립 완료. Browser Checkpoint 대기 중 — 사람이 로컬 http://localhost:3000/account 를 확인해야 한다: Guest(비로그인) 화면, 로그인 후 Member 화면(프로필 저장/성인 확인/내 활동), 그리고 Admin 계정(app_metadata.role=admin 또는 moderator)으로 로그인했을 때 관리자 탭 노출까지 확인 필요. 확인 후 `/run-wave W09 --resume` 입력."
+      "note": "Browser Checkpoint 사람 확인 완료(/run-wave W09 --resume)."
     },
     {
       "wave_id": "W10",
