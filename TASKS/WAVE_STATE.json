@@ -130,11 +130,11 @@
         "CMP-SCR004-REPORT",
         "PAGE-SCR004"
       ],
-      "status": "awaiting_browser_checkpoint",
+      "status": "completed",
       "checkpoint_required": true,
-      "checkpoint_result": null,
+      "checkpoint_result": "confirmed",
       "last_completed_task": "PAGE-SCR004",
-      "note": "SCR-004(/mates) Preview 확인 필요. 자동 검사(build/dev/curl)는 PASS. 확인할 것: (1) 필터 입력 시 URL 반영 및 '총 N개의 결과' 갱신 (2) 목록 카드 클릭 시 상세 패널/Drawer 열림(?post=<id>) (3) 비로그인 상태에서 참가/신고/차단이 로그인 안내로 대체되는지. 실제 동행글 데이터는 DB-SEED-BASE를 실제 프로젝트에 적용하지 않아 0건(정상). 확인 후 /run-wave W08 --resume."
+      "note": "Browser Checkpoint 사람 확인 완료(/run-wave W08 --resume)."
     },
     {
       "wave_id": "W09",
