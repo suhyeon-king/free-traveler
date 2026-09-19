@@ -192,11 +192,11 @@
         "RELEASE-CHECK-LIGHTHOUSE",
         "SUPABASE-ENV-VERIFY"
       ],
-      "status": "awaiting_browser_checkpoint",
+      "status": "completed",
       "checkpoint_required": true,
-      "checkpoint_result": null,
+      "checkpoint_result": "confirmed",
       "last_completed_task": "RELEASE-CHECK-LIGHTHOUSE",
-      "note": "4개 Task 모두 DONE. FINAL Preview Checkpoint 대기 — 전체 Release 확인(`/release-check` → RELEASE_READY 판정)을 사람이 실행/확인한 뒤 `/run-wave W12 --resume`으로 최종 완료 처리."
+      "note": "FINAL Preview Checkpoint 사람 확인 완료(/release-check로 RELEASE_READY 확인 후 /run-wave W12 --resume). scripts/audit_tasks.py check 16 오탐(NEGATION_CUES에 \"없음\" 누락)을 수정해 18/18 AUDIT_PASS로 전환한 뒤 확정."
     }
   ]
 }
