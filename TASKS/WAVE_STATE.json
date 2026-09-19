@@ -167,7 +167,7 @@
       "status": "in_progress",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "E2E-MATE-AUTH",
+      "last_completed_task": "E2E-PUBLIC-SMOKE",
       "note": null
     },
     {

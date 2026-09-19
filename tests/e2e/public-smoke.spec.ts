@@ -7,26 +7,54 @@ import { test, expect, type Locator } from "@playwright/test";
  *            TASKS/TASK-CMP-SCR003-MATE-WRITE.md(E2E-005의 근거).
  * Chromium 프로젝트로만 실행한다(playwright.config.ts).
  *
- * Selector 우선순위: role → accessible label → test id. 이 시점에는 Page Owner Task가
- * 아직 구현되지 않아(PAGE-SCR002~005 NOT_STARTED) 아래 role/name은
- * design-reference/UI_CONTRACT.md·SCREEN_ROUTE_CONTRACT.json·docs/04_UIUX_PLAN.md에 적힌
- * 문구를 그대로 옮긴 것이다. 실제 구현 시 문구가 달라지면 이 파일도 함께 갱신한다.
+ * Selector는 실제 구현(PAGE-SCR001~003)의 role·accessible name을 그대로
+ * 반영했다. `/travel-tools`의 탭 전환은 순수 CSS(라디오+`<label>`)로 구현되어
+ * 있어 ARIA `role="tab"`이 없다(PAGE-SCR003에 알려진 제한사항으로 이미 보고됨)
+ * — 그래서 탭 전환은 `getByText`로 라벨 텍스트를 클릭한다.
  */
 
 const NON_TRANSMISSION_NOTICE = "입력값은 외부 사이트로 전달되지 않습니다";
 
-/** 새 탭으로 열리는 외부 이동 링크(target=_blank + noopener,noreferrer, 쿼리 파라미터 없음)를 검사한다.
- *  실제 목적지 사이트의 응답/콘텐츠는 검사하지 않는다(요청 규칙). */
-async function expectOutboundLink(link: Locator) {
-  await expect(link).toBeVisible();
-  await expect(link).toHaveAttribute("target", "_blank");
-  const rel = (await link.getAttribute("rel")) ?? "";
-  expect(rel).toContain("noopener");
-  expect(rel).toContain("noreferrer");
-  const href = await link.getAttribute("href");
-  expect(href, "외부 이동 링크에 href가 있어야 한다").toBeTruthy();
-  expect(href).toMatch(/^https?:\/\//);
-  expect(href).not.toContain("?"); // 목적지·날짜 등 사용자 입력값이 query로 붙지 않아야 한다(REQ-FUNC-016/024).
+/**
+ * 항공/숙소 요약 단계에서 외부 이동 버튼(또는 미설정 오류 카드)을 검사한다.
+ * 실제 구현은 `<a href>`가 아니라 `window.open(url, "_blank", "noopener,noreferrer")`를
+ * 호출하는 버튼이라(REQ-FUNC-016/024), DOM 속성이 아니라 실제로 열리는
+ * `popup` 페이지의 URL로 검증한다. 실제 목적지 사이트의 응답/콘텐츠는 검사하지
+ * 않는다(요청 규칙) — 새 탭이 열렸는지, 그 시작 URL이 HTTPS이고 이 화면의 입력값
+ * (국가·지역·날짜)이 쿼리로 붙지 않았는지만 확인한다.
+ *
+ * `FLIGHT_OUTBOUND_URL`/`HOTEL_OUTBOUND_URL`(또는 `app_settings`)이 설정되지
+ * 않은 환경(예: 이 값을 시크릿으로 두지 않은 CI)에서는 버튼 대신 "설정되지
+ * 않았습니다" 오류 카드가 노출되는 것이 정상 동작이다(Design Ref Error 상태) —
+ * 이 경우 오류 카드+재시도 버튼을 검증하는 것으로 대체한다.
+ */
+async function expectOutboundButtonOrConfigError(
+  page: import("@playwright/test").Page,
+  panel: Locator,
+  buttonName: string,
+  notConfiguredText: string,
+) {
+  const outboundButton = panel.getByRole("button", { name: buttonName });
+  const notConfiguredAlert = panel.getByRole("alert").filter({
+    hasText: notConfiguredText,
+  });
+
+  await expect(outboundButton.or(notConfiguredAlert).first()).toBeVisible();
+
+  if (await outboundButton.isVisible()) {
+    const popupPromise = page.context().waitForEvent("page");
+    await outboundButton.click();
+    const popup = await popupPromise;
+    const url = popup.url();
+    expect(url).toMatch(/^https:\/\//);
+    expect(url).not.toContain("?");
+    await popup.close();
+  } else {
+    await expect(notConfiguredAlert).toBeVisible();
+    await expect(
+      notConfiguredAlert.getByRole("button", { name: "다시 시도" }),
+    ).toBeVisible();
+  }
 }
 
 test.describe("E2E-001 메인 페이지의 추천 여행지와 주요 CTA", () => {
@@ -62,9 +90,13 @@ test.describe("E2E-002 대표 소개의 free_traveler, 50회 이상, 30개국 �
     await aboutCta.click();
     await expect(page).toHaveURL(/\/about$/);
 
-    await expect(page.getByText(/free_traveler/)).toBeVisible();
-    await expect(page.getByText(/50\+ Trips|50회 이상/)).toBeVisible();
-    await expect(page.getByText(/30\+ Countries|30개국 이상/)).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "free_traveler" }),
+    ).toBeVisible();
+    await expect(page.getByText("50+ Trips", { exact: true })).toBeVisible();
+    await expect(
+      page.getByText("30+ Countries", { exact: true }),
+    ).toBeVisible();
   });
 });
 
@@ -74,16 +106,36 @@ test.describe("E2E-003 여행 도구의 항공 외부 이동 안내와 href", ()
   }) => {
     await page.goto("/travel-tools");
 
-    const flightTab = page.getByRole("tab", { name: "항공편" });
+    const flightTab = page.getByText("항공편", { exact: true });
     await expect(flightTab).toBeVisible();
     await flightTab.click();
 
-    await expect(page.getByText(NON_TRANSMISSION_NOTICE)).toBeVisible();
+    const flightPanel = page.locator("#panel-flight");
+    await expect(flightPanel.getByText(NON_TRANSMISSION_NOTICE)).toBeVisible();
 
-    const flightOutboundLink = page.getByRole("link", {
-      name: /항공편.*보러 가기/,
-    });
-    await expectOutboundLink(flightOutboundLink);
+    const departureDate = new Date(Date.now() + 14 * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+    const returnDate = new Date(Date.now() + 18 * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+
+    const flightComboboxes = flightPanel.getByRole("combobox");
+    await flightComboboxes.nth(0).selectOption("일본");
+    await flightComboboxes.nth(1).selectOption("도쿄");
+    await flightPanel.getByLabel("출발일").fill(departureDate);
+    await flightPanel.getByLabel("귀국일").fill(returnDate);
+    await flightPanel.getByRole("button", { name: "계속" }).click();
+
+    await expect(flightPanel.getByText(NON_TRANSMISSION_NOTICE)).toBeVisible();
+    await expect(flightPanel.getByText("일본 · 도쿄")).toBeVisible();
+
+    await expectOutboundButtonOrConfigError(
+      page,
+      flightPanel,
+      "항공편 보러 가기",
+      "항공편 외부 이동 URL이 설정되지 않았습니다",
+    );
   });
 });
 
@@ -93,16 +145,36 @@ test.describe("E2E-004 여행 도구의 숙소 외부 이동 안내와 href", ()
   }) => {
     await page.goto("/travel-tools");
 
-    const hotelTab = page.getByRole("tab", { name: "숙소" });
+    const hotelTab = page.getByText("숙소", { exact: true });
     await expect(hotelTab).toBeVisible();
     await hotelTab.click();
 
-    await expect(page.getByText(NON_TRANSMISSION_NOTICE)).toBeVisible();
+    const hotelPanel = page.locator("#panel-hotel");
+    await expect(hotelPanel.getByText(NON_TRANSMISSION_NOTICE)).toBeVisible();
 
-    const hotelOutboundLink = page.getByRole("link", {
-      name: /숙소.*보러 가기/,
-    });
-    await expectOutboundLink(hotelOutboundLink);
+    const checkInDate = new Date(Date.now() + 14 * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+    const checkOutDate = new Date(Date.now() + 18 * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
+
+    const hotelComboboxes = hotelPanel.getByRole("combobox");
+    await hotelComboboxes.nth(0).selectOption("일본");
+    await hotelComboboxes.nth(1).selectOption("도쿄");
+    await hotelPanel.getByLabel("체크인").fill(checkInDate);
+    await hotelPanel.getByLabel("체크아웃").fill(checkOutDate);
+    await hotelPanel.getByRole("button", { name: "계속" }).click();
+
+    await expect(hotelPanel.getByText(NON_TRANSMISSION_NOTICE)).toBeVisible();
+    await expect(hotelPanel.getByText("일본 · 도쿄")).toBeVisible();
+
+    await expectOutboundButtonOrConfigError(
+      page,
+      hotelPanel,
+      "숙소 보러 가기",
+      "숙소 외부 이동 URL이 설정되지 않았습니다",
+    );
   });
 });
 
@@ -112,7 +184,7 @@ test.describe("E2E-005 비로그인 동행글 작성의 로그인 안내", () =>
   }) => {
     await page.goto("/travel-tools");
 
-    const mateTab = page.getByRole("tab", { name: "동행 구하기" });
+    const mateTab = page.getByText("동행 구하기", { exact: true });
     await expect(mateTab).toBeVisible();
     await mateTab.click();
 

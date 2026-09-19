@@ -4,8 +4,16 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 56
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tests/e2e/public-smoke.spec.ts`는 이전 Wave에서 골격(추측 role/name)으로 먼저 작성되어 있었다. 이번 Task에서 PAGE-SCR001/PAGE-SCR002/PAGE-SCR003의 실제 markup으로 전부 갱신하고 `npx playwright test tests/e2e/public-smoke.spec.ts --project=chromium`을 실제로 반복 실행해 **5개 모두 실제 PASS**를 확인했다(이전 골격은 한 번도 실행된 적이 없었다).
+>
+> **발견·수정한 실제 문제 3건(모두 사람 확인 완료)**:
+> 1. `free_traveler`/`탭 라벨` 텍스트가 페이지 여러 곳에 반복돼 `getByText(regex)`가 strict-mode 위반을 일으킴 — heading role 지정, `exact:true`, 패널 스코프(`#panel-flight`/`#panel-hotel`) 지정으로 해결(이 Task의 Expected File 안에서 해결).
+> 2. `FlightTab`/`HotelTab`의 "보러 가기"는 `<a href>`가 아니라 `window.open()`을 호출하는 `<button>`이라 기존 골격의 `href`/`target`/`rel` 속성 검증 방식 자체가 성립하지 않았다 — 실제로 열리는 `popup` 페이지의 URL을 검증하는 방식으로 재작성했고, `FLIGHT_OUTBOUND_URL`/`HOTEL_OUTBOUND_URL`이 설정되지 않은 환경(예: 이 값을 시크릿으로 등록하지 않은 CI)에서는 "설정되지 않았습니다" 오류 카드 검증으로 자동 분기하도록 만들어 로컬/CI 어느 쪽이든 안전하게 통과하게 했다(이 Task의 Expected File 안에서 해결).
+> 3. **가장 심각한 문제(사람 확인 후 Expected File 밖 수정)**: `playwright.config.ts`의 기본 `baseURL`이 `http://127.0.0.1:3000`이었는데, Next.js 개발 서버가 자신을 `localhost`로 인식해 `127.0.0.1` 접근을 다른 오리진으로 보고 클라이언트 번들/하이드레이션 관련 리소스를 차단하고 있었다(HMR 웹소켓 오류로 발견). 그 결과 Playwright로 연 모든 페이지가 **클라이언트 하이드레이션이 전혀 일어나지 않는 상태**(React state/onClick 전부 무동작)였고, 지금까지의 Playwright Smoke는 CSS만으로 동작하는 부분만 우연히 통과해온 것으로 확인됐다. 사람에게 확인한 뒤 `playwright.config.ts`의 `DEFAULT_BASE_URL`을 `http://localhost:3000`으로 고쳤다(이 Task의 Expected File 밖, 사전 확인 받음). 재실행 결과 실제 폼 입력(국가/지역/날짜 select·input) 후 상태 전이(요약 화면 전환)까지 정상 동작함을 확인했다.
+>
+> **알려진 제한사항**: 이번 수정으로 향후 작성될 `TEST-RLS-BASIC`을 제외한 모든 Playwright 테스트(이미 있는 `E2E-TRAVEL-TOOLS`/`E2E-MATE-AUTH` 포함)가 실제로 하이드레이션된 상태에서 재검증되어야 한다 — `E2E-MATE-AUTH`는 이 Task보다 먼저 완료 처리됐고 당시에는 이 하이드레이션 버그가 아직 발견되지 않았었다(다만 그 파일은 환경변수 미설정으로 전부 skip 상태라 실제로 하이드레이션에 의존하는 코드 경로를 검증하지 못한 채였다 — 재검증 필요 시 사람 확인 후 진행).
 
 ---
 

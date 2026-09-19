@@ -1,6 +1,11 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const DEFAULT_BASE_URL = "http://127.0.0.1:3000";
+// "localhost"를 쓴다 — Next.js 개발 서버는 자기 자신을 "localhost"로 인식하므로
+// "127.0.0.1"로 접근하면 다른 오리진으로 보고 클라이언트 번들 로딩을 막아
+// Playwright에서 연 페이지가 전혀 하이드레이션되지 않는 문제가 실제로 있었다
+// (React state/onClick이 전부 작동하지 않고, CSS만으로 동작하는 부분만 우연히
+// 통과했다 — E2E-PUBLIC-SMOKE 작성 중 발견).
+const DEFAULT_BASE_URL = "http://localhost:3000";
 // PLAYWRIGHT_BASE_URL이 있으면 그 값(예: Vercel Preview URL)으로 덮어쓴다.
 const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? DEFAULT_BASE_URL;
 const usingRemoteBaseURL = !!process.env.PLAYWRIGHT_BASE_URL;
