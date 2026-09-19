@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 4
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/app/mates/page.tsx` 조립 완료. Header → Intro+작성 CTA → Filter/결과 요약 → 목록(30%)+상세(70%, `?post=<id>`로 제어) → 신청 방법 3단계 → 안전/신고/차단 안내 → Footer. `searchParams`를 서버에서 직접 읽어 `listMatePosts()`로 필터링하고, 선택된 글은 작성자 닉네임을 조회해 `MateDetailPanel`에 전달한다. 참가/신고/차단은 각각 인라인 Server Action(`applyAction`/`reportAction`/`blockAction`)으로 연결했다(중복 참가는 DB unique 위반 메시지를 친절한 문구로 변환). `npm run build` PASS(`/mates` 동적 라우트), `npm run dev` 실행 후 HTTP 200 + 모든 Section 텍스트("동행 찾기"/"총 0개의 결과"/"동행글 작성하기"/"참가 신청 방법"/"안전한 동행을 위한 안내") 확인 — 결과 0건은 아직 실제 프로젝트에 시드 데이터를 적용하지 않아 정상.
 
 ---
 
