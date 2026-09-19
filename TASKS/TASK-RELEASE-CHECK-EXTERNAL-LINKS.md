@@ -4,8 +4,13 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 61
+- **Task Status:** BLOCKED_HUMAN_INPUT
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `docs/checklists/EXTERNAL_LINKS_CHECK.md` 작성 완료. 실제 브라우저에서 새 탭이 열리고 목적지가 맞는지는 사람이 직접 확인해야 해 Claude Code가 대신 완료 처리할 수 없다(설계상 자동화 불가 Task).
+>
+> **체크리스트 준비 중 발견·해결한 심각한 버그**: 홈(SCR-001)에서 여행지/안전정보 Card를 클릭해도 상세 Drawer가 전혀 열리지 않아, 외교부 안전정보 링크(REQ-FUNC-049)에 사람이 아예 도달할 수 없는 상태였다. 사람에게 확인한 뒤 `PAGE-SCR001`을 수정해 해결했다(`TASK-PAGE-SCR001.md` 참고, 이 Task의 Expected File 밖). 지금은 체크리스트에 적힌 경로로 실제 확인이 가능하다.
+>
+> **사람이 실제 브라우저(로컬 또는 Vercel Preview)로 항공/숙소 외부 이동 링크와 외교부 안전정보 링크를 확인하고 체크리스트를 채운 뒤 이 Task를 DONE으로 갱신해야 한다.**
 
 ---
 

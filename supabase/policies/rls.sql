@@ -198,3 +198,34 @@ create policy app_settings_update_admin_only
   to authenticated
   using (is_admin_or_moderator())
   with check (is_admin_or_moderator());
+
+-- ---------------------------------------------------------------------------
+-- 기본 권한(GRANT) — RLS 정책은 이미 존재하는 테이블 권한을 "제한"할 뿐, 권한
+-- 자체를 부여하지는 않는다. 이 마이그레이션이 GRANT를 빠뜨려 실제 배포
+-- 프로젝트에서 anon/authenticated 역할 모두 6개 테이블 전부에 대해
+-- "permission denied for table ..."를 반환하던 실제 운영 버그를 수정한다
+-- (SUPABASE-ENV-VERIFY에서 발견, 사람 확인 완료). RLS가 행 단위 접근을 이미
+-- 강제하므로 아래 GRANT는 안전하다.
+-- ---------------------------------------------------------------------------
+grant usage on schema public to anon, authenticated;
+
+grant select on profiles to authenticated;
+grant insert, update on profiles to authenticated;
+
+grant select on mate_posts to anon, authenticated;
+grant insert, update, delete on mate_posts to authenticated;
+
+grant select, insert, update, delete on mate_applications to authenticated;
+
+-- anon에게도 SELECT를 준다 — mate_posts의 공개 조회 정책이 차단 관계를 걸러낼 때
+-- user_blocks를 서브쿼리로 참조하는데, Postgres RLS는 정책식이 참조하는 테이블도
+-- 조회자(anon 포함)가 최소 SELECT 권한을 갖고 있어야 평가할 수 있다. 실제로
+-- user_blocks 행은 user_blocks_select_own_or_admin 정책이 anon에게는 항상 거짓이라
+-- 여전히 노출되지 않는다(빈 결과만 반환).
+grant select, insert, delete on user_blocks to authenticated;
+grant select on user_blocks to anon;
+
+grant select, insert, update on reports to authenticated;
+
+grant select on app_settings to anon, authenticated;
+grant insert, update on app_settings to authenticated;

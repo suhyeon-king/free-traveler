@@ -192,9 +192,11 @@
         "RELEASE-CHECK-LIGHTHOUSE",
         "SUPABASE-ENV-VERIFY"
       ],
-      "status": "pending",
+      "status": "blocked",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "last_completed_task": "SUPABASE-ENV-VERIFY",
+      "note": "SUPABASE-ENV-VERIFY만 DONE(Claude Code가 자동 확인 가능한 범위였고, 그 과정에서 실제 anon 권한 GRANT 누락 버그를 발견·수정함). 나머지 3개(DEPLOY-VERCEL-SETUP/RELEASE-CHECK-EXTERNAL-LINKS/RELEASE-CHECK-LIGHTHOUSE)는 설계상 사람의 실제 Vercel 계정·브라우저 확인이 필요해 BLOCKED_HUMAN_INPUT 상태다. 각각 docs/checklists/VERCEL_DEPLOY_CHECK.md·EXTERNAL_LINKS_CHECK.md·LIGHTHOUSE_CHECK.md에 준비된 체크리스트를 사람이 채운 뒤 해당 TASK-*.md Status를 DONE으로 바꾸면 `/run-wave W12 --resume`으로 이어서 진행(모두 DONE이면 FINAL Release Checkpoint로 진행)."
     }
   ]
 }

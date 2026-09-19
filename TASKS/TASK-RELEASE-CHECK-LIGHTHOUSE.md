@@ -4,8 +4,11 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 60
+- **Task Status:** BLOCKED_HUMAN_INPUT
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `docs/checklists/LIGHTHOUSE_CHECK.md` 작성 완료. 실제 Chrome DevTools Lighthouse 측정값은 Claude Code가 대신 만들어낼 수 없어(설계상 자동화 불가 Task) 목표치(LCP≤2.5s/INP≤200ms/CLS≤0.1)와 측정 방법(반드시 `npm run build && npm run start` 프로덕션 빌드 또는 실제 Vercel URL로 측정, 개발 서버는 왜곡됨)만 정리했다.
+>
+> **사람이 실제 브라우저로 5개 Screen을 Lighthouse로 측정하고 체크리스트를 채운 뒤 이 Task를 DONE으로 갱신해야 한다.**
 
 ---
 

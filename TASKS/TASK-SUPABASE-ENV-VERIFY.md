@@ -4,8 +4,13 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 64
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `docs/checklists/SUPABASE_ENV_CHECK.md` 작성 완료. Auth(`/auth/v1/settings` 200)/Postgres(`/rest/v1` 응답) 사용 가능 확인, `.env`/`.env.local` 미커밋 확인(Security AC), Storage는 이 프로젝트가 사용하지 않음(정적 데이터 정책, 규칙 16)을 실제로 확인했다.
+>
+> **실제 운영 버그 발견·수정(사람 확인 완료)**: 확인 과정에서 실제 배포 프로젝트가 6개 테이블 전부에서 `anon` 역할에 "permission denied"를 반환하는 것을 발견했다 — RLS 정책은 정상이지만 그 이전 단계인 Postgres 기본 GRANT가 마이그레이션에 전혀 없었다. 그 결과 비로그인 사용자의 `/mates` 목록·홈 최근 동행글·항공/숙소 URL 조회가 실제로는 권한 오류였는데 코드의 `try/catch`가 조용히 빈 값으로 가려왔다. 사람에게 확인한 뒤 `supabase/policies/rls.sql`(`DB-RLS-BASE`의 Expected File, 이미 DONE)에 역할별 GRANT 문을 추가하고 `npx supabase db query --linked`로 실제 프로젝트에 적용했다. 적용 후 의도한 접근 범위(공개 테이블은 anon 200, 그 외는 여전히 401)와 정확히 일치함을 실제로 재검증했고, `mate_posts` 정책이 서브쿼리로 참조하는 `user_blocks`에도 anon SELECT가 필요하다는 것을 추가로 발견해 함께 수정했다. Playwright 재실행으로 기존 동작이 깨지지 않았음을 확인했다(5/5 PASS).
+>
+> **알려진 제한사항**: `authenticated` 역할 기준 접근은 실제 로그인 세션이 필요해 이번에는 `anon` 역할만 HTTP로 직접 검증했다(실제 테스트 계정이 채워지면 `TEST-RLS-BASIC`에서 함께 검증됨). Supabase 요금제/사용량 확인은 사람이 대시보드에서 직접 해야 한다(체크리스트에 남겨둠).
 
 ---
 
