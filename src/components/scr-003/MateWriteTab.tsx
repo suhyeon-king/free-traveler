@@ -148,7 +148,7 @@ export function MateWriteTab({ user, onSubmit }: MateWriteTabProps) {
     setIsSubmitting(false);
 
     if (result.ok) {
-      router.push(`/mates/${result.postId}`);
+      router.push(`/mates?post=${result.postId}`);
     } else {
       setError(result.error);
     }

@@ -167,7 +167,7 @@
       "status": "in_progress",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "CI-LINT-TYPECHECK-TEST",
+      "last_completed_task": "E2E-MATE-AUTH",
       "note": null
     },
     {

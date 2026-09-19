@@ -4,8 +4,13 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 58
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tests/e2e/auth-smoke.spec.ts`는 이전 Wave에서 골격(TODO 포함)으로 먼저 작성되어 있었다. 이번 Task에서 PAGE-SCR003/PAGE-SCR004/PAGE-SCR005의 실제 markup을 대조해 role·accessible name을 전부 실제 값으로 갱신했다: 이메일/비밀번호/로그인 버튼, 동행글 작성 Form(제목/국가/시작일/종료일/설명/안전수칙 체크박스/동행글 등록 버튼), 참가 요청 Form(참가 메시지/참가 요청 보내기). `/travel-tools`·`/account`의 탭 전환은 순수 CSS(라디오+`<label>`)라 `role="tab"`이 없어(기존에 알려진 제한사항) `getByText`로 라벨 텍스트를 클릭하도록 고쳤다.
+>
+> **실제 버그 발견 및 해결(사람 확인 완료)**: `MateWriteTab.tsx`(`CMP-SCR003-MATE-WRITE`, 이미 DONE)가 동행글 작성 성공 시 `` router.push(`/mates/${result.postId}`) ``로 이동했는데, 실제 라우트는 `/mates`(쿼리 `?post=<id>`)만 있고 `/mates/[id]` 동적 라우트가 없어 404로 떨어지는 실제 흐름 버그였다(REQ-FUNC-031). 사람에게 확인한 뒤 "MateWriteTab.tsx 수정(권장)"을 선택해, 이 Task의 Expected Files 밖이지만 `` router.push(`/mates?post=${result.postId}`) ``로 한 줄만 고쳤다.
+>
+> `npm run lint`/`typecheck`/`format:check` PASS. `npx playwright test tests/e2e/auth-smoke.spec.ts --project=chromium` 실행 결과 2개 모두 `skipped`(환경변수 `E2E_TEST_USER_EMAIL`/`E2E_TEST_USER_PASSWORD`가 설정되지 않아 설계대로 건너뜀 — 실패가 아님). **실제 로그인 계정으로 두 흐름이 끝까지 통과하는지는 이번 자동 검증에서 확인하지 못했다** — 더미 테스트 계정을 만들어 두 환경변수를 설정한 뒤 재실행이 필요하다(사람 확인 권장 사항으로 보고).
 
 ---
 
