@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 25
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-004/BlockButton.tsx` 작성 완료. `window.confirm` 확인 후 Server Action(`onBlock`, `blockUser` 감쌈)을 호출한다. 비로그인이면 렌더링하지 않는다. 상호 노출 제한은 이 Component가 아니라 RLS/쿼리 필터(`DB-RLS-BASE`)가 서버에서 강제한다.
 
 ---
 

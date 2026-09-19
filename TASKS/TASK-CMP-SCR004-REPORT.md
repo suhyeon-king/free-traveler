@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 24
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-004/ReportButton.tsx` 작성 완료. `SHR-DRAWER-MODAL`의 Modal로 사유 코드(5종)+상세 설명 Form을 띄우고, 제출 성공 시 접수번호(`reportId`)+접수 시각(`createdAt`)을 표시한다(값은 Server Action이 반환). 비로그인이면 렌더링하지 않는다. 신고자·피신고자 상세 열람 제한은 RLS(`DB-RLS-BASE`)가 서버에서 강제한다. p95 ≤3s 응답 목표는 실측하지 않았다(UI 자체는 즉시 반영).
 
 ---
 

@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 20
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-004/MateFilter.tsx` 작성 완료. 국가·지역·기간·연령대·성별·여행스타일·모집상태를 URL 검색 파라미터로 관리(Page Owner가 서버에서 읽어 필터링). "총 N개" 요약은 `resultCount` prop(Page Owner가 서버에서 계산해 전달)으로 표시한다. 차단 사용자 글 제외는 이 Component가 아니라 `DB-RLS-BASE`/`DB-ACCESS`가 서버에서 처리한다.
 
 ---
 

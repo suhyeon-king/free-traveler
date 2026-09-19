@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 22
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-004/MateDetailPanel.tsx` 작성 완료. `post`(작성자 닉네임 포함, 이메일/연락처 절대 미포함)가 `null`이면 아무것도 렌더링하지 않는다. 열림/닫힘은 `?post=<id>` 쿼리 유무로만 제어(같은 화면, 별도 Route 없음) — 닫기는 `router.push("/mates")`. Desktop은 고정 패널, Mobile은 하단 Bottom Sheet(반응형 CSS로 분기, `SHR-DRAWER-MODAL`의 Drawer 대신 직접 스타일링해 "70% 고정 분할" Desktop 레이아웃을 정확히 구현). 공유는 `shareLink()` 사용. 참가 요청/차단/신고 버튼은 `actions` slot(Page Owner가 이미 렌더링된 JSX로 전달)으로 조립한다.
 
 ---
 

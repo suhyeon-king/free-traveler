@@ -130,9 +130,11 @@
         "CMP-SCR004-REPORT",
         "PAGE-SCR004"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "checkpoint_required": true,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "last_completed_task": "CMP-SCR004-REPORT",
+      "note": null
     },
     {
       "wave_id": "W09",

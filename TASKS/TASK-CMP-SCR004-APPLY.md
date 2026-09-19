@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 23
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-004/ApplyForm.tsx` 작성 완료. 비로그인/성인 미확인 시 로그인 안내 카드(REQ-FUNC-034 Security AC의 서버 401 이중 방어는 Server Action이 담당), 500자 이내 메시지 제출. 중복 PENDING/ACCEPTED 차단은 DB unique 제약(이미 `DB-SCHEMA-BASE`에 존재)에 걸린 에러를 Server Action이 친절한 메시지로 변환해 `error`로 반환하는 방식으로 UI에 노출한다.
+>
+> **설계 판단**: "제출 완료 Toast"는 전역 `ToastProvider`가 앱 어디에도 아직 연결되지 않아(어떤 Task도 `layout.tsx`를 Expected Files로 갖고 있지 않음) `useToast()`를 직접 호출하면 Provider 없는 트리에서 예외가 날 수 있다고 판단해, 대신 인라인 완료 안내 문구로 대체했다. Provider가 연결되면 이 부분을 Toast로 교체할 수 있다.
 
 ---
 

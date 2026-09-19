@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 21
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-004/MateList.tsx` 작성 완료(Server Component, "use client" 없음). `posts` prop(Page Owner가 `listMatePosts()`로 조회해 전달, `effectiveStatus`로 배치 없는 자동 마감 이미 계산됨)을 최대 8개까지 카드로 표시. 카드는 `<Link href="/mates?post=<id>">`로 이동해 같은 화면의 상세 패널을 연다(별도 Route 없음, RSC 콜백 직렬화 제약 회피). 0건이면 완성형 Empty State(필터 유무에 따라 "필터 초기화"/"동행글 작성하기" CTA 분기).
 
 ---
 
