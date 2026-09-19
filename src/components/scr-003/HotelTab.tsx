@@ -31,7 +31,7 @@ const TIPS = [
   "취소 정책은 예약 전 반드시 원문으로 확인하세요.",
 ];
 
-interface HotelFormState {
+export interface HotelFormState {
   country: string;
   region: string;
   checkInDate: string;
@@ -56,6 +56,32 @@ function getTodayIso(): string {
 }
 
 /**
+ * 숙소 조건 입력값의 경계값 검증(REQ-FUNC-021). 과거 체크인, 체크아웃≤체크인을
+ * 차단한다. `todayIso`를 인자로 받아 순수 함수로 유지한다(테스트 용이성 —
+ * `TASK-UNIT-TRAVEL-DATES`에서 이 함수를 직접 import해 검증한다).
+ */
+export function validateHotelDates(
+  form: HotelFormState,
+  todayIso: string = getTodayIso(),
+): string | null {
+  if (
+    !form.country ||
+    !form.region ||
+    !form.checkInDate ||
+    !form.checkOutDate
+  ) {
+    return "국가·지역·체크인·체크아웃을 모두 입력해 주세요.";
+  }
+  if (form.checkInDate < todayIso) {
+    return "체크인은 오늘 이후로 선택해 주세요.";
+  }
+  if (form.checkOutDate <= form.checkInDate) {
+    return "체크아웃은 체크인보다 이후여야 합니다.";
+  }
+  return null;
+}
+
+/**
  * SCR-003 숙소 탭(입력·검증·요약·외부이동·Tip, REQ-FUNC-019~026, REQ-NF-017).
  * 국가·지역·체크인·체크아웃 입력값은 React 상태로만 유지하며 서버로 전송하지 않는다.
  */
@@ -74,21 +100,7 @@ export function HotelTab({ outboundUrl }: HotelTabProps) {
   }
 
   function validate(): string | null {
-    if (
-      !form.country ||
-      !form.region ||
-      !form.checkInDate ||
-      !form.checkOutDate
-    ) {
-      return "국가·지역·체크인·체크아웃을 모두 입력해 주세요.";
-    }
-    if (form.checkInDate < todayIso) {
-      return "체크인은 오늘 이후로 선택해 주세요.";
-    }
-    if (form.checkOutDate <= form.checkInDate) {
-      return "체크아웃은 체크인보다 이후여야 합니다.";
-    }
-    return null;
+    return validateHotelDates(form, todayIso);
   }
 
   function handleSubmit(event: FormEvent) {

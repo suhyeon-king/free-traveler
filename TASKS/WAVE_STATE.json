@@ -177,10 +177,10 @@
         "UNIT-MATE-STATE",
         "UNIT-TRAVEL-DATES"
       ],
-      "status": "in_progress",
+      "status": "completed",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "UNIT-MATE-STATE",
+      "last_completed_task": "UNIT-TRAVEL-DATES",
       "note": null
     },
     {

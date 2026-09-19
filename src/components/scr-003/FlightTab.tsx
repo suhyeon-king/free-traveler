@@ -33,7 +33,7 @@ const TIPS = [
   "수하물 규정은 항공사 공식 페이지에서 다시 확인하세요.",
 ];
 
-interface FlightFormState {
+export interface FlightFormState {
   country: string;
   region: string;
   departureDate: string;
@@ -59,6 +59,32 @@ function getTodayIso(): string {
 }
 
 /**
+ * 항공 조건 입력값의 경계값 검증(REQ-FUNC-013). 과거 출발일, 귀국일<출발일을
+ * 차단한다. `todayIso`를 인자로 받아 순수 함수로 유지한다(테스트 용이성 —
+ * `TASK-UNIT-TRAVEL-DATES`에서 이 함수를 직접 import해 검증한다).
+ */
+export function validateFlightDates(
+  form: FlightFormState,
+  todayIso: string = getTodayIso(),
+): string | null {
+  if (
+    !form.country ||
+    !form.region ||
+    !form.departureDate ||
+    !form.returnDate
+  ) {
+    return "국가·지역·출발일·귀국일을 모두 입력해 주세요.";
+  }
+  if (form.departureDate < todayIso) {
+    return "출발일은 오늘 이후로 선택해 주세요.";
+  }
+  if (form.returnDate < form.departureDate) {
+    return "귀국일은 출발일과 같거나 이후여야 합니다.";
+  }
+  return null;
+}
+
+/**
  * SCR-003 항공편 탭(입력·검증·요약·외부이동·Tip, REQ-FUNC-011~018/054, REQ-NF-017).
  * 국가·지역·출발일·귀국일 입력값은 이 Component의 React 상태로만 유지하며 서버
  * DB·로그·쿼리로 전송하지 않는다.
@@ -78,21 +104,7 @@ export function FlightTab({ outboundUrl }: FlightTabProps) {
   }
 
   function validate(): string | null {
-    if (
-      !form.country ||
-      !form.region ||
-      !form.departureDate ||
-      !form.returnDate
-    ) {
-      return "국가·지역·출발일·귀국일을 모두 입력해 주세요.";
-    }
-    if (form.departureDate < todayIso) {
-      return "출발일은 오늘 이후로 선택해 주세요.";
-    }
-    if (form.returnDate < form.departureDate) {
-      return "귀국일은 출발일과 같거나 이후여야 합니다.";
-    }
-    return null;
+    return validateFlightDates(form, todayIso);
   }
 
   function handleSubmit(event: FormEvent) {

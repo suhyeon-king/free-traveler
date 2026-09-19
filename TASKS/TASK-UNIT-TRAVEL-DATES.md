@@ -4,8 +4,13 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 52
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tests/unit/travel-dates.test.ts` 작성 완료. 과거 출발일/체크인, 귀국일<출발일, 체크아웃≤체크인, 필수 필드 누락 등 경계값 32케이스(항공 16 + 숙소 16)를 모두 실제로 차단하는지 검증한다.
+>
+> **필요한 최소 리팩토링(이 Task Expected File 밖, `UNIT-MATE-STATE`에서 이미 사람 확인받은 동일 패턴을 그대로 적용)**: `FlightTab.tsx`/`HotelTab.tsx`(각각 `CMP-SCR003-FLIGHT-FORM`/`CMP-SCR003-HOTEL-FORM`의 Expected Files, 이미 DONE)의 `validate()`가 Component 내부 클로저라 React 상태 없이는 호출할 수 없었다. 동작 변경 없이 `validateFlightDates(form, todayIso)`/`validateHotelDates(form, todayIso)` 순수 함수로 추출해 export하고, 각 Component의 `validate()`가 그것을 호출하도록 리팩토링했다. `npm run build`로 실제 렌더링이 그대로인지, `npx playwright test tests/e2e/travel-tools.spec.ts`로 실제 항공/숙소 입력→요약 흐름이 그대로 동작하는지 재확인했다(3/3 PASS).
+>
+> `npm run typecheck`/`lint`/`format:check`/`build` PASS. `npm run test:unit` 실행 결과 16개 테스트 모두 실제 PASS.
 
 ---
 
