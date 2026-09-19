@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT(간소화)
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 29
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-005/AdminTab.tsx` 작성 완료. `isAdmin`이 false면 `null`을 반환해 탭 자체를 렌더링하지 않는다(실제 접근 제어는 RLS `reports_update_admin_only`/`app_settings` Admin-only 정책이 서버에서 이중으로 강제). 신고 큐는 상태(OPEN/REVIEWING/RESOLVED/DISMISSED) 필터 버튼(URL 쿼리 `reportStatus` 갱신, Page Owner가 서버에서 다시 읽어 `listReports(status)` 호출)+행별 상태 변경 select. 외부 URL 설정 Form은 `type="url"` input 2개로 HTTPS 형식은 브라우저가 1차로 강제하고 실제 검증은 Page Owner가 전달하는 `onSaveOutboundUrls` Server Action 내부에서 `setAppSetting`(→`validateOutboundUrl`)으로 수행한다. 콘텐츠 CMS·감사 로그 UI 없음. `npm run build`(typecheck 포함) PASS, `npm run lint` PASS, `npx prettier --write` 적용 후 `npm run format:check` PASS.
 
 ---
 

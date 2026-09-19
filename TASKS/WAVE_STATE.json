@@ -149,7 +149,7 @@
       "status": "in_progress",
       "checkpoint_required": true,
       "checkpoint_result": null,
-      "last_completed_task": "CMP-SCR005-MY-ACTIVITY",
+      "last_completed_task": "CMP-SCR005-ADMIN",
       "note": null
     },
     {
