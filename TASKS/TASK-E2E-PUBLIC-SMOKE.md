@@ -6,7 +6,9 @@
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 56
 - **Task Status:** DONE
 
-> `tests/e2e/public-smoke.spec.ts`는 이전 Wave에서 골격(추측 role/name)으로 먼저 작성되어 있었다. 이번 Task에서 PAGE-SCR001/PAGE-SCR002/PAGE-SCR003의 실제 markup으로 전부 갱신하고 `npx playwright test tests/e2e/public-smoke.spec.ts --project=chromium`을 실제로 반복 실행해 **5개 모두 실제 PASS**를 확인했다(이전 골격은 한 번도 실행된 적이 없었다).
+> `tests/e2e/public-smoke.spec.ts`는 이전 Wave에서 골격(추측 role/name)으로 먼저 작성되어 있었다. 이번 Task에서 PAGE-SCR001/PAGE-SCR002의 실제 markup으로 갱신하고 `npx playwright test tests/e2e/public-smoke.spec.ts --project=chromium`을 실제로 반복 실행해 PASS를 확인했다(이전 골격은 한 번도 실행된 적이 없었다).
+>
+> **Task 경계 정정(사람 확인 완료)**: 원래 골격에는 E2E-003/004/005(항공/숙소/동행탭 비로그인 안내)까지 섞여 있었는데, 이 흐름들은 `TASK-E2E-TRAVEL-TOOLS.md`의 Functional AC·Expected File(`tests/e2e/travel-tools.spec.ts`)에 정확히 해당해 이 Task의 범위(흐름1·2, 홈/대표소개)가 아니었다. 사람에게 확인한 뒤 그 3개 흐름을 `tests/e2e/travel-tools.spec.ts`로 옮기고 이 파일은 E2E-001/002만 남겼다.
 >
 > **발견·수정한 실제 문제 3건(모두 사람 확인 완료)**:
 > 1. `free_traveler`/`탭 라벨` 텍스트가 페이지 여러 곳에 반복돼 `getByText(regex)`가 strict-mode 위반을 일으킴 — heading role 지정, `exact:true`, 패널 스코프(`#panel-flight`/`#panel-hotel`) 지정으로 해결(이 Task의 Expected File 안에서 해결).

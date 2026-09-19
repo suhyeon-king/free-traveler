@@ -4,8 +4,11 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 57
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tests/e2e/travel-tools.spec.ts` 신규 작성. `TASK-E2E-PUBLIC-SMOKE`의 골격 파일에 잘못 섞여 있던 E2E-003/004/005(사람 확인 후 이동)를 이 Expected File로 옮겨와 정리했다. 흐름3(항공: 국가/지역/출발일/귀국일 입력→"계속"→요약→외부 이동)/흐름4(숙소 동일)/흐름5(동행 구하기 탭 비로그인 시 로그인 안내 카드) 모두 실제 `FlightTab`/`HotelTab`/`MateWriteTab` markup 기준으로 작성했다. 항공/숙소 "보러 가기"는 `<a href>`가 아니라 `window.open()`을 호출하는 버튼이라 실제로 열리는 `popup` 페이지 URL로 검증하고, 외부 URL이 설정되지 않은 환경에서는 "설정되지 않았습니다" 오류 카드 검증으로 자동 분기한다(로컬/CI 어느 쪽이든 안전).
+>
+> **주의(사람 확인 필요)**: `playwright.config.ts` 기본 `baseURL`을 `127.0.0.1`→`localhost`로 고친 뒤(`E2E-PUBLIC-SMOKE`에서 발견한 하이드레이션 버그 수정)에야 이 Task의 폼 입력(select/onChange 등 실제 React 상태 변경)이 정상 동작함을 확인했다. `npm run lint`/`typecheck`/`format:check` PASS. `npx playwright test tests/e2e/public-smoke.spec.ts tests/e2e/travel-tools.spec.ts --project=chromium` 실행 결과 5개 모두 실제 PASS.
 
 ---
 
