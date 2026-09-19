@@ -72,7 +72,7 @@ DB_TABLE_SOFT_LIMIT = 8  # "크게 넘지 않음" 허용 오차 범위(참고 �
 
 FORBIDDEN_TECH_KEYWORDS = ["aws", "ec2"]
 FORBIDDEN_MERGE_KEYWORDS = ["자동 merge", "auto-merge", "automerge"]
-NEGATION_CUES = ["않는다", "않음", "제외", "금지", "exclud", "포함하지 않", "만들지 않", "생략", "도입하지 않"]
+NEGATION_CUES = ["않는다", "않음", "없음", "제외", "금지", "exclud", "포함하지 않", "만들지 않", "생략", "도입하지 않"]
 
 MD_HEADERS = ["Seq", "Task ID", "제목", "Category", "Implementation Status", "Requirement Ref",
               "Screen", "Route", "Page Entry", "Depends On", "Expected Files", "Functional AC",
