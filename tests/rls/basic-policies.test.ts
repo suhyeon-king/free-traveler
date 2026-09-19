@@ -44,7 +44,12 @@ const ADMIN_EMAIL = process.env.RLS_TEST_ADMIN_EMAIL;
 const ADMIN_PASSWORD = process.env.RLS_TEST_ADMIN_PASSWORD;
 
 const hasCoreEnv = Boolean(
-  SUPABASE_URL && ANON_KEY && USER_A_EMAIL && USER_A_PASSWORD && USER_B_EMAIL && USER_B_PASSWORD,
+  SUPABASE_URL &&
+  ANON_KEY &&
+  USER_A_EMAIL &&
+  USER_A_PASSWORD &&
+  USER_B_EMAIL &&
+  USER_B_PASSWORD,
 );
 const hasAdminEnv = Boolean(
   hasCoreEnv && SERVICE_ROLE_KEY && ADMIN_EMAIL && ADMIN_PASSWORD,
@@ -54,7 +59,10 @@ function anonClient(): SupabaseClient {
   return createClient(SUPABASE_URL!, ANON_KEY!);
 }
 
-async function signIn(email: string, password: string): Promise<SupabaseClient> {
+async function signIn(
+  email: string,
+  password: string,
+): Promise<SupabaseClient> {
   const client = anonClient();
   const { error } = await client.auth.signInWithPassword({ email, password });
   if (error) {
@@ -145,16 +153,18 @@ describe.skipIf(!hasCoreEnv)("RLS 기본 정책(익명/본인/타인)", () => {
 
   describe("mate_posts", () => {
     it("익명 사용자는 동행글을 작성할 수 없다", async () => {
-      const { error } = await anonClient().from("mate_posts").insert({
-        author_id: userIdA,
-        country: "테스트국",
-        start_date: "2027-01-01",
-        end_date: "2027-01-05",
-        headcount: 2,
-        travel_style: [],
-        title: `${RUN_TAG}-anon-insert`,
-        description: "익명 삽입 거부 검증용",
-      });
+      const { error } = await anonClient()
+        .from("mate_posts")
+        .insert({
+          author_id: userIdA,
+          country: "테스트국",
+          start_date: "2027-01-01",
+          end_date: "2027-01-05",
+          headcount: 2,
+          travel_style: [],
+          title: `${RUN_TAG}-anon-insert`,
+          description: "익명 삽입 거부 검증용",
+        });
       expect(error).not.toBeNull();
     });
 
@@ -285,12 +295,14 @@ describe.skipIf(!hasCoreEnv)("RLS 기본 정책(익명/본인/타인)", () => {
 
   describe("reports (익명 삽입 거부만 검증 — 정리 불가능한 행은 만들지 않음)", () => {
     it("익명 사용자는 신고를 접수할 수 없다", async () => {
-      const { error } = await anonClient().from("reports").insert({
-        reporter_id: userIdA,
-        target_type: "POST",
-        target_id: postId ?? userIdA,
-        reason: `${RUN_TAG}-anon-report`,
-      });
+      const { error } = await anonClient()
+        .from("reports")
+        .insert({
+          reporter_id: userIdA,
+          target_type: "POST",
+          target_id: postId ?? userIdA,
+          reason: `${RUN_TAG}-anon-report`,
+        });
       expect(error).not.toBeNull();
     });
   });
@@ -463,7 +475,10 @@ describe.skipIf(!hasAdminEnv)("RLS 기본 정책(Admin/Moderator)", () => {
         .update({ value: originalValue })
         .eq("key", "flight_outbound_url");
     } else {
-      await serviceClient.from("app_settings").delete().eq("key", "flight_outbound_url");
+      await serviceClient
+        .from("app_settings")
+        .delete()
+        .eq("key", "flight_outbound_url");
     }
   });
 });
