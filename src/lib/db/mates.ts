@@ -73,10 +73,22 @@ const MATE_POST_COLUMNS =
 const MATE_APPLICATION_COLUMNS =
   "id, post_id, applicant_id, message, status, created_at, updated_at";
 
+/**
+ * `status`(작성자의 수동 마감)와 `endDate` 경과 여부를 함께 계산해 실질 마감
+ * 상태를 정한다(REQ-FUNC-037, 배치 작업 없이 조회 시점에 계산). `endDate`가
+ * 오늘(자정 기준)보다 이전이면 `status`와 무관하게 `CLOSED`로 본다.
+ */
+export function computeEffectiveMatePostStatus(
+  status: MatePostStatus,
+  endDate: string,
+): MatePostStatus {
+  const isPastEndDate = new Date(endDate) < new Date(new Date().toDateString());
+  return status === "CLOSED" || isPastEndDate ? "CLOSED" : "RECRUITING";
+}
+
 function toMatePost(row: Record<string, unknown>): MatePost {
   const endDate = row.end_date as string;
   const status = row.status as MatePostStatus;
-  const isPastEndDate = new Date(endDate) < new Date(new Date().toDateString());
 
   return {
     id: row.id as string,
@@ -93,8 +105,7 @@ function toMatePost(row: Record<string, unknown>): MatePost {
     title: row.title as string,
     description: row.description as string,
     status,
-    effectiveStatus:
-      status === "CLOSED" || isPastEndDate ? "CLOSED" : "RECRUITING",
+    effectiveStatus: computeEffectiveMatePostStatus(status, endDate),
     createdAt: row.created_at as string,
     updatedAt: row.updated_at as string,
   };

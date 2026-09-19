@@ -177,9 +177,11 @@
         "UNIT-MATE-STATE",
         "UNIT-TRAVEL-DATES"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "last_completed_task": "UNIT-MATE-STATE",
+      "note": null
     },
     {
       "wave_id": "W12",

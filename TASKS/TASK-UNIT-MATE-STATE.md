@@ -4,8 +4,15 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 54
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tests/unit/mate-state.test.ts` 작성 완료. 이 코드베이스에는 별도의 "상태 머신" 모듈이 없어, 실제로 존재하는 3가지 방식(순수 계산 함수·함수 시그니처의 타입 제약·DB unique index)을 그대로 따라 검증했다: (1) `computeEffectiveMatePostStatus()`로 모집중→마감 자동/수동 전이 4케이스, (2) `updateMateApplicationStatus`의 목표 상태 타입이 `Exclude<MateApplicationStatus,"PENDING">`(ACCEPTED/REJECTED만 허용, PENDING 복귀 불가)임을 `expectTypeOf`로 검증, (3) `mate_applications_unique_active` 부분 유니크 인덱스가 마이그레이션 SQL에 실제로 존재하는지 정적 확인.
+>
+> **필요한 최소 리팩토링(이 Task Expected File 밖, 사람 확인 완료)**: "모집중→마감(자동)" 계산 로직이 `src/lib/db/mates.ts`의 private 함수(`toMatePost`) 안에 갇혀 있어 실제 코드를 import해 검증할 방법이 없었다. 사람에게 확인한 뒤 동작 변경 없이 `computeEffectiveMatePostStatus(status, endDate)` 함수로 추출해 export하고 `toMatePost`가 그것을 호출하도록 리팩토링했다(`DB-ACCESS`의 Expected File, 이미 DONE).
+>
+> **알려진 제한사항(정직하게 문서화됨, 코드에 남김)**: 신고(`reports`) 상태는 OPEN→REVIEWING→RESOLVED/DISMISSED 순서로 문서화되어 있지만, 실제 코드/RLS 어디에도 그 순서를 강제하는 로직이 없다 — Admin/Moderator 권한 여부만 확인하고 임의의 상태 간 전이가 허용된다. 이 사실 자체를 테스트로 명시적으로 남겼다(새 검증 로직을 만들지 않음, Expected File 범위 밖). 중복 신청 차단은 DB 제약 존재 여부만 정적으로 확인했고, 실제 DB에서의 동작(중복 삽입 시 에러 발생)은 `TEST-RLS-BASIC`(통합 테스트) 영역이다.
+>
+> `npm run typecheck`/`lint`/`format:check`/`build` PASS. `npm run test:unit` 실행 결과 11개 테스트 모두 실제 PASS.
 
 ---
 
