@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT(간소화)
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 28
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-005/MyActivityTab.tsx` 작성 완료. 5개 Section(내가 쓴 동행글/들어온 참가 요청/내가 보낸 참가 요청/내가 접수한 신고/차단한 사용자) 각각 0건 시 완성형 Empty State(사유+이용 방법+CTA)로 대체. 글 마감/삭제, 참가 요청 승인/거절, 차단 해제는 각각 Page Owner가 전달하는 Server Action prop(`onUpdatePostStatus`/`onDeletePost`/`onUpdateApplicationStatus`/`onUnblock`)으로 실행하고 결과를 인라인 안내로 표시한다(`ToastProvider`가 아직 어떤 `layout.tsx`에도 연결되지 않아 `useToast()`를 호출하지 않음 — `CMP-SCR004-APPLY`와 동일 판단, 이메일 발송은 REQ 상 제외). 승인된 참가자가 있는 글에는 마감/삭제 전 주의 문구를 노출한다(REQ-FUNC-037 effectiveStatus 계산과 별개로 UI 경고). "후기 작성" 관련 UI는 포함하지 않음. `npm run typecheck`(`npm run build` 경유) PASS, `npm run lint` PASS, `npx prettier --write` 적용 후 `npm run format:check` PASS.
 
 ---
 

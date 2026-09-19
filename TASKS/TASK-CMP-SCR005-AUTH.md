@@ -4,8 +4,9 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 26
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-005/AuthTab.tsx` 작성 완료. 로그인/회원가입/비밀번호 재설정 3모드 탭 + `isLoggedIn`일 때 로그아웃 버튼. `src/lib/auth.ts`의 Client-safe 함수(`signInWithEmail`/`signUpWithEmail`/`requestPasswordReset`/`signOut`)를 직접 호출하며 별도 Server Action이 필요 없다. 생년월일 미저장 보안 안내 문구 포함. `npm run typecheck`(`npm run build` 경유) PASS, `npm run lint` PASS, `npx prettier --write` 적용 후 `npm run format:check` PASS.
 
 ---
 

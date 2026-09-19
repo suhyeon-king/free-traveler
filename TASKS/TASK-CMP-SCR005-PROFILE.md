@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 27
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `src/components/scr-005/ProfileTab.tsx` 작성 완료. 닉네임(필수)·연령대(필수)·성별(선택)·여행 스타일(최소 1개, 체크박스)·성인 확인 배지/버튼. 프로필 저장(`onSave`)과 성인 확인(`onConfirmAdult`)은 Page Owner가 전달하는 Server Action prop으로 받는다(profiles UPDATE는 서버 세션이 필요해 `createServerSupabaseClient()`를 써야 하므로 Client Component가 직접 호출할 수 없음). 정확한 생년월일 필드는 어디에도 없음. `npm run typecheck`(`npm run build` 경유) PASS, `npm run lint` PASS, `npx prettier --write` 적용 후 `npm run format:check` PASS.
 
 ---
 
