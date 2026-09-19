@@ -192,11 +192,11 @@
         "RELEASE-CHECK-LIGHTHOUSE",
         "SUPABASE-ENV-VERIFY"
       ],
-      "status": "blocked",
+      "status": "awaiting_browser_checkpoint",
       "checkpoint_required": true,
       "checkpoint_result": null,
-      "last_completed_task": "SUPABASE-ENV-VERIFY",
-      "note": "DEPLOY-VERCEL-SETUP/RELEASE-CHECK-EXTERNAL-LINKS/SUPABASE-ENV-VERIFY DONE. RELEASE-CHECK-LIGHTHOUSE만 아직 BLOCKED_HUMAN_INPUT — docs/checklists/LIGHTHOUSE_CHECK.md의 5개 Screen Lighthouse 측정을 사람이 채운 뒤 TASK-RELEASE-CHECK-LIGHTHOUSE.md Status를 DONE으로 바꾸면 `/run-wave W12 --resume`으로 FINAL Release Checkpoint까지 진행."
+      "last_completed_task": "RELEASE-CHECK-LIGHTHOUSE",
+      "note": "4개 Task 모두 DONE. FINAL Preview Checkpoint 대기 — 전체 Release 확인(`/release-check` → RELEASE_READY 판정)을 사람이 실행/확인한 뒤 `/run-wave W12 --resume`으로 최종 완료 처리."
     }
   ]
 }

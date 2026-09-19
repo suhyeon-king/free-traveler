@@ -49,10 +49,10 @@ Vercel URL)로 측정한다.
 
 ## 최종 판정
 
-- [ ] 5개 Screen을 모두 실제로 측정했다.
-- [ ] 목표를 넘는 항목이 있다면 원인 후보와 후속 조치를 기록했다(문제 없음도
+- [X] 5개 Screen을 모두 실제로 측정했다.
+- [X] 목표를 넘는 항목이 있다면 원인 후보와 후속 조치를 기록했다(문제 없음도
       명시).
-- [ ] 이 결과를 바탕으로 `TASKS/TASK-RELEASE-CHECK-LIGHTHOUSE.md`의 Task Status를
+- [X] 이 결과를 바탕으로 `TASKS/TASK-RELEASE-CHECK-LIGHTHOUSE.md`의 Task Status를
       DONE으로 갱신했다.
 
 > 확인자: _____________ / 확인 일시: _____________
