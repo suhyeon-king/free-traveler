@@ -113,6 +113,16 @@ export function DestinationGrid({ onSelectDestination }: DestinationGridProps) {
     setFavoriteIds(result.ids);
   }
 
+  function handleSelectDestination(destinationId: string) {
+    if (onSelectDestination) {
+      onSelectDestination(destinationId);
+      return;
+    }
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("destination", destinationId);
+    router.push(`/?${params.toString()}`, { scroll: false });
+  }
+
   async function handleShare(destination: Destination) {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
     const result = await shareLink({
@@ -130,7 +140,7 @@ export function DestinationGrid({ onSelectDestination }: DestinationGridProps) {
         <div className="overflow-hidden rounded-[16px] border border-[#E4E1DC]">
           <button
             type="button"
-            onClick={() => onSelectDestination?.(destination.id)}
+            onClick={() => handleSelectDestination(destination.id)}
             className={`${FOCUS_RING_CLASS_NAME} block w-full text-left`}
           >
             <div className="relative h-40 w-full">

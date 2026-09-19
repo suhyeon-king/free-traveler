@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 import {
   getCountrySafety,
   isSafetyStale,
@@ -10,7 +12,12 @@ import { Drawer } from "@/components/shared/Drawer";
 
 interface SafetyDrawerProps {
   countrySlug: string | null;
-  onClose: () => void;
+  /**
+   * Optional — Server Component(`PAGE-SCR001`)는 Client Component에 함수를 prop으로
+   * 전달할 수 없어(RSC 직렬화 제약) 생략하고 렌더링할 수 있어야 한다. 생략되면
+   * `?safety=<countrySlug>` 쿼리 파라미터를 이 Component가 직접 읽고 쓴다.
+   */
+  onClose?: () => void;
 }
 
 /**
@@ -24,6 +31,8 @@ interface SafetyDrawerProps {
  * 실제 경보 단계·지역 범위 데이터가 추가되면 이 Drawer도 함께 갱신해야 한다.
  */
 export function SafetyDrawer({ countrySlug, onClose }: SafetyDrawerProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const country = countrySlug ? getCountrySafety(countrySlug) : undefined;
 
   if (!country) {
@@ -33,10 +42,21 @@ export function SafetyDrawer({ countrySlug, onClose }: SafetyDrawerProps) {
   const stale = isSafetyStale(country.verifiedAt);
   const titleId = `safety-drawer-title-${country.countrySlug}`;
 
+  function handleClose() {
+    if (onClose) {
+      onClose();
+      return;
+    }
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("safety");
+    const query = params.toString();
+    router.push(query ? `/?${query}` : "/");
+  }
+
   return (
     <Drawer
       isOpen={Boolean(countrySlug)}
-      onClose={onClose}
+      onClose={handleClose}
       titleId={titleId}
       side="left"
     >

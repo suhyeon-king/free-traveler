@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 import { COUNTRY_SAFETY, isSafetyStale } from "@/data/safety";
 
 const CARDS_COUNT = 6;
@@ -19,7 +21,19 @@ interface SafetyGridProps {
  * (색상 단독 구분 금지).
  */
 export function SafetyGrid({ onSelectCountry }: SafetyGridProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const countries = COUNTRY_SAFETY.slice(0, CARDS_COUNT);
+
+  function handleSelectCountry(countrySlug: string) {
+    if (onSelectCountry) {
+      onSelectCountry(countrySlug);
+      return;
+    }
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("safety", countrySlug);
+    router.push(`/?${params.toString()}`, { scroll: false });
+  }
 
   return (
     <section aria-labelledby="safety-grid-heading">
@@ -36,7 +50,7 @@ export function SafetyGrid({ onSelectCountry }: SafetyGridProps) {
             <li key={country.countrySlug} className="list-none">
               <button
                 type="button"
-                onClick={() => onSelectCountry?.(country.countrySlug)}
+                onClick={() => handleSelectCountry(country.countrySlug)}
                 className="block w-full rounded-[16px] border border-[#E4E1DC] p-4 text-left"
               >
                 <span className="text-[18px] font-semibold text-[#2B2A28]">

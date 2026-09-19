@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { Drawer } from "@/components/shared/Drawer";
@@ -14,10 +15,16 @@ import { shareLink, type ShareLinkResult } from "@/lib/share";
 
 interface DestinationDrawerProps {
   destinationId: string | null;
-  onClose: () => void;
-  onSelectDestination: (destinationId: string) => void;
+  /**
+   * Optional — Server Component(`PAGE-SCR001`)는 Client Component에 함수를 prop으로
+   * 전달할 수 없어(RSC 직렬화 제약) 생략하고 렌더링할 수 있어야 한다. 생략되면
+   * `?destination=<id>` 쿼리 파라미터를 이 Component가 직접 읽고 쓴다
+   * (`useRouter`/`useSearchParams`).
+   */
+  onClose?: () => void;
+  onSelectDestination?: (destinationId: string) => void;
   /** 해외 여행지의 "안전정보 보기"에서 호출한다. `countrySlug`를 안전정보 Drawer(CMP-SCR001-SAFETY-PANEL)에 전달한다. */
-  onOpenSafety: (countrySlug: string) => void;
+  onOpenSafety?: (countrySlug: string) => void;
 }
 
 /**
@@ -31,6 +38,8 @@ export function DestinationDrawer({
   onSelectDestination,
   onOpenSafety,
 }: DestinationDrawerProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [favoriteIds, setFavoriteIds] = useState<string[]>(() =>
     getFavoriteIds(),
   );
@@ -50,6 +59,38 @@ export function DestinationDrawer({
   const isFavorite = favoriteIds.includes(destination.id);
   const titleId = `destination-drawer-title-${destination.id}`;
 
+  function handleClose() {
+    if (onClose) {
+      onClose();
+      return;
+    }
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("destination");
+    const query = params.toString();
+    router.push(query ? `/?${query}` : "/");
+  }
+
+  function handleSelectDestination(nextDestinationId: string) {
+    if (onSelectDestination) {
+      onSelectDestination(nextDestinationId);
+      return;
+    }
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("destination", nextDestinationId);
+    router.push(`/?${params.toString()}`);
+  }
+
+  function handleOpenSafety(countrySlug: string) {
+    if (onOpenSafety) {
+      onOpenSafety(countrySlug);
+      return;
+    }
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("destination");
+    params.set("safety", countrySlug);
+    router.push(`/?${params.toString()}`);
+  }
+
   function handleToggleFavorite() {
     const result = toggleFavorite(destination!.id);
     setFavoriteIds(result.ids);
@@ -66,7 +107,11 @@ export function DestinationDrawer({
   }
 
   return (
-    <Drawer isOpen={Boolean(destinationId)} onClose={onClose} titleId={titleId}>
+    <Drawer
+      isOpen={Boolean(destinationId)}
+      onClose={handleClose}
+      titleId={titleId}
+    >
       <div className="flex flex-col gap-4">
         <div className="relative h-48 w-full overflow-hidden rounded-[16px]">
           <OptimizedImage
@@ -123,7 +168,7 @@ export function DestinationDrawer({
         {destination.region === "overseas" ? (
           <button
             type="button"
-            onClick={() => onOpenSafety(destination.countrySlug)}
+            onClick={() => handleOpenSafety(destination.countrySlug)}
             className={`${FOCUS_RING_CLASS_NAME} ${MIN_TOUCH_TARGET_CLASS_NAME} w-fit rounded-[999px] bg-[#1F4B8F] px-6 text-[16px] font-semibold text-[#FFFFFF]`}
           >
             안전정보 보기
@@ -213,7 +258,7 @@ export function DestinationDrawer({
                 <li key={related.id}>
                   <button
                     type="button"
-                    onClick={() => onSelectDestination(related.id)}
+                    onClick={() => handleSelectDestination(related.id)}
                     className={`${FOCUS_RING_CLASS_NAME} rounded-[999px] border border-[#E4E1DC] px-3 py-1 text-[13px] text-[#2B2A28]`}
                   >
                     {related.name}
