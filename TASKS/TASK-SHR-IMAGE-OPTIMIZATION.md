@@ -7,6 +7,8 @@
 - **Task Status:** DONE
 
 > `src/components/shared/OptimizedImage.tsx` 작성 완료. `next/image` 래퍼로 `isPriority`가 아니면 항상 `loading="lazy"`, `isPriority=true`면 `priority`(LCP 후보용)를 적용한다. 반응형 `sizes` 기본값을 제공하고 필요 시 override 가능하다.
+>
+> **추가 수정(사람이 메인 페이지 이미지가 안 보인다고 보고, 확인 완료)**: `src/data/destinations.ts`/`representative.ts`가 참조하는 이미지 경로(`/images/destinations/*.jpg` 등)에 대응하는 실제 파일이 `public/images/`에 없어(범위 밖 콘텐츠 소싱 문제, 코드 버그 아님) 모든 이미지가 깨진 아이콘으로 보였다. 실제 사진을 구해 넣는 것은 이 Task 범위 밖이라, 대신 `OptimizedImage`를 Client Component로 바꿔 `next/image`의 `onError`를 감지해 로딩 실패 시 깨진 아이콘 대신 중립적인 플레이스홀더(회색 배경 + 이미지 아이콘, `alt` 텍스트를 `aria-label`로 유지)를 보여주도록 했다. 모든 호출부가 `fill` + 크기 고정 `relative` 컨테이너 패턴이라 플레이스홀더도 같은 방식(`h-full w-full`)으로 자리를 채운다. `npm run build`/`lint`/`typecheck` PASS, Playwright로 실제 깨진 이미지 자리에 플레이스홀더가 렌더링됨을 확인했고 `public-smoke`/`travel-tools` 전체 스모크 재실행으로 회귀 없음 확인(5/5 PASS).
 
 ---
 
