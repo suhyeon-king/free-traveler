@@ -4,8 +4,9 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 59
+- **Task Status:** BLOCKED_HUMAN_INPUT
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `docs/checklists/A11Y_MANUAL_CHECK.md` 작성 완료. 이 Task는 설계상(Category `MANUAL_CHECK`) 자동화로 대체할 수 없는 사람의 실제 브라우저 키보드/스크린리더 점검이라, 사람에게 확인한 뒤 Playwright로 키보드 이벤트(Tab/화살표/Enter)만 프로그래밍으로 보내는 **자동 사전 점검**을 수행해 포커스 이동 순서·포커스 링 유무·명백한 문제(로고 링크 포커스 스타일 누락 등)까지는 확인해 체크리스트 문서에 기록했다. 다만 스크린리더 실제 음성 출력, 로그인 세션이 필요한 흐름(신고 Modal, Admin 탭 등)은 자동으로 확인할 수 없어 **`docs/checklists/A11Y_MANUAL_CHECK.md`의 "사람 확인 필요" 절이 아직 남아 있다.** 이 항목들을 사람이 실제 브라우저에서 확인하고 체크리스트를 갱신하기 전에는 이 Task를 DONE으로 표시하지 않는다(실행하지 않은 검증을 통과로 보고하지 않는다는 원칙에 따름).
 
 ---
 
