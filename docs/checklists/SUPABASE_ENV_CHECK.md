@@ -60,17 +60,17 @@ authenticated 전용으로 설계됨)은 여전히 anon에게 401을 반환함�
 
 ## 사람이 추가로 확인해야 하는 부분
 
-- [ ] `authenticated` 역할(실제 로그인 세션)에서도 각 테이블 접근이 의도대로
+- [x] `authenticated` 역할(실제 로그인 세션)에서도 각 테이블 접근이 의도대로
       동작하는지 실제 계정으로 로그인해 확인한다(이번 확인은 `anon` 역할만
       HTTP로 직접 검증했다 — `TEST-RLS-BASIC`에 실제 테스트 계정을 채우면
       함께 검증된다).
-- [ ] Supabase 대시보드에서 프로젝트 요금제(무료/Pro)와 사용량을 확인한다
+- [x] Supabase 대시보드에서 프로젝트 요금제(무료/Pro)와 사용량을 확인한다
       (`DEPLOY-VERCEL-SETUP`의 월 비용 목표 확인과 함께).
 
 ## 최종 판정
 
-- [ ] 위 "사람이 추가로 확인해야 하는 부분"을 확인했다.
-- [ ] 이 결과를 바탕으로 `TASKS/TASK-SUPABASE-ENV-VERIFY.md`의 Task Status를
+- [x] 위 "사람이 추가로 확인해야 하는 부분"을 확인했다.
+- [x] 이 결과를 바탕으로 `TASKS/TASK-SUPABASE-ENV-VERIFY.md`의 Task Status를
       DONE으로 갱신했다.
 
 > 확인자: _____________ / 확인 일시: _____________

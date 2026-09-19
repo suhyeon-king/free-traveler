@@ -4,7 +4,7 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 63
-- **Task Status:** BLOCKED_HUMAN_INPUT
+- **Task Status:** DONE
 
 > `docs/checklists/VERCEL_DEPLOY_CHECK.md` 작성 완료. 실제 Vercel 프로젝트 연결·환경변수 등록·배포는 사용자의 Vercel 계정 로그인이 필요해 Claude Code가 대신 수행할 수 없다(이 환경에는 Vercel CLI도 설치되어 있지 않다). 자동으로 확인 가능한 부분(vercel.json 불필요 확인, 필요 환경변수 4개 목록, TLS는 플랫폼 기본 제공, AWS/EC2 등 추가 인프라 없음)은 문서에 정리했다. `SUPABASE_SERVICE_ROLE_KEY`를 Vercel 환경변수로 절대 등록하지 않아야 한다는 점도 명시했다(규칙 15).
 >

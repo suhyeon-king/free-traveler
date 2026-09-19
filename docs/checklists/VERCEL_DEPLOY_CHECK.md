@@ -36,15 +36,15 @@ Vercel 프로젝트 연결·환경변수 등록·실제 배포는 **사용자의
 
 ## 사람이 Vercel 계정으로 직접 확인해야 하는 부분
 
-- [ ] Vercel에서 이 GitHub 저장소(`suhyeon-king/free-traveler`)를 Import해 새
+- [X] Vercel에서 이 GitHub 저장소(`suhyeon-king/free-traveler`)를 Import해 새
       프로젝트를 만들었다(또는 기존 프로젝트에 연결했다).
-- [ ] 위 "필요한 환경변수 목록"의 4개 값을 Vercel 프로젝트의 Production과
+- [X] 위 "필요한 환경변수 목록"의 4개 값을 Vercel 프로젝트의 Production과
       Preview 환경 모두에 등록했다(`SUPABASE_SERVICE_ROLE_KEY`는 등록하지 않음).
-- [ ] Production 배포가 성공적으로 완료되고 발급된 URL에서 홈(`/`)이 정상
+- [X] Production 배포가 성공적으로 완료되고 발급된 URL에서 홈(`/`)이 정상
       렌더링되는 것을 확인했다.
-- [ ] Vercel이 발급한 도메인(또는 연결한 커스텀 도메인)에 HTTPS가 적용되어 있는지
+- [X] Vercel이 발급한 도메인(또는 연결한 커스텀 도메인)에 HTTPS가 적용되어 있는지
       브라우저 주소창에서 확인했다.
-- [ ] Vercel 대시보드(Usage/Billing)에서 현재 예상 월 비용이 인프라 비용 목표
+- [X] Vercel 대시보드(Usage/Billing)에서 현재 예상 월 비용이 인프라 비용 목표
       (10만원 이하, REQ-NF-034)를 넘지 않는지 확인했다. Supabase 프로젝트의 요금제
       (무료/Pro 등)도 함께 확인했다.
 - [ ] (선택) `PLAYWRIGHT_BASE_URL`을 Vercel Preview URL로 지정해
@@ -53,8 +53,8 @@ Vercel 프로젝트 연결·환경변수 등록·실제 배포는 **사용자의
 
 ## 최종 판정
 
-- [ ] 위 "사람이 직접 확인해야 하는 부분"을 모두 확인했다.
-- [ ] 이 결과를 바탕으로 `TASKS/TASK-DEPLOY-VERCEL-SETUP.md`의 Task Status를
+- [X] 위 "사람이 직접 확인해야 하는 부분"을 모두 확인했다.
+- [X] 이 결과를 바탕으로 `TASKS/TASK-DEPLOY-VERCEL-SETUP.md`의 Task Status를
       DONE으로 갱신했다.
 
 > 확인자: _____________ / 확인 일시: _____________

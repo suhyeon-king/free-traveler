@@ -4,7 +4,7 @@
 - **Priority:** P1
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 61
-- **Task Status:** BLOCKED_HUMAN_INPUT
+- **Task Status:** DONE
 
 > `docs/checklists/EXTERNAL_LINKS_CHECK.md` 작성 완료. 실제 브라우저에서 새 탭이 열리고 목적지가 맞는지는 사람이 직접 확인해야 해 Claude Code가 대신 완료 처리할 수 없다(설계상 자동화 불가 Task).
 >
