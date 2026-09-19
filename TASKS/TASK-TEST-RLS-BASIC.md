@@ -4,8 +4,17 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 55
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tests/rls/basic-policies.test.ts` 작성 완료. 익명/본인/타인/Admin·Moderator 역할별로 6개 테이블(profiles/mate_posts/mate_applications/user_blocks/reports/app_settings)의 읽기·쓰기 권한을 실제 Supabase 클라이언트(anon key, 인증된 세션)로 검증한다.
+>
+> **인프라 제약(사람 확인 완료)**: 이 프로젝트에는 별도 Supabase 테스트 프로젝트가 없어 Security AC("테스트 프로젝트 키만 사용")를 문자 그대로 만족할 수 없다. 사람에게 확인한 뒤 실제 배포 프로젝트를 대상으로 env-gated(모든 필요 환경변수 — `RLS_TEST_USER_A/B_EMAIL/PASSWORD`, 선택적으로 `SUPABASE_SERVICE_ROLE_KEY`+`RLS_TEST_ADMIN_EMAIL/PASSWORD` — 가 없으면 전체 skip, 실패 처리하지 않음)로 작성했다. `SUPABASE_SERVICE_ROLE_KEY`는 이 Vitest 파일(Node 전용, 빌드 산출물 미포함)에서만 Admin 역할(`app_metadata.role`) 설정 용도로 읽으며 Client 코드에는 전혀 등장하지 않는다(규칙 15 범위 내, 새로운 민감 자격 증명 종류라 사람에게 별도 확인받음).
+>
+> `vitest.config.ts`의 `include`에 `tests/rls/**`가 빠져 있어(이 Task Expected File 밖, 필수적인 최소 수정이라 함께 처리) 추가하지 않으면 이 테스트 파일이 `npm run test:unit`/CI에서 전혀 수집되지 않았다 — 추가했다.
+>
+> `npm run typecheck`/`lint` PASS. `npm run test:unit` 실행 결과 두 describe 블록(20개 테스트) 모두 환경변수 미설정으로 **정상적으로 skip**되어 exit 0으로 통과함을 확인했다(auth-smoke.spec.ts와 동일한 skip 설계).
+>
+> **알려진 제한사항**: 실제 `RLS_TEST_USER_A/B`, `SUPABASE_SERVICE_ROLE_KEY`+`RLS_TEST_ADMIN_*` 계정/키가 아직 없어 **테스트가 실제로 통과하는지(각 assertion이 진짜 RLS 위반을 정확히 잡아내는지)는 이번 세션에서 실행 확인하지 못했다.** 더미 계정을 Supabase Auth에 미리 만들고 이메일 인증을 완료한 뒤 환경변수를 채워 `npm run test:unit`을 재실행해 실제 통과 여부를 확인해야 한다. `reports` 테이블은 어떤 역할도 DELETE 정책이 없어 익명 삽입 거부만 기본 티어에서 검증하고, 실제 신고 생성+정리는 Admin 티어(service_role)에서만 수행하도록 설계했다(문서화됨).
 
 ---
 

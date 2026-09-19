@@ -167,7 +167,7 @@
       "status": "in_progress",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "MANUAL-A11Y-KEYBOARD",
+      "last_completed_task": "TEST-RLS-BASIC",
       "note": null
     },
     {
