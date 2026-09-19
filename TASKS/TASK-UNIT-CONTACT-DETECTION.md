@@ -4,8 +4,13 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 53
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `tests/unit/contact-detection.test.ts` 작성 완료. `src/components/scr-003/MateWriteTab.tsx`가 export하는 `detectContactInfo()`를 실제로 import해 검증한다. Functional AC("탐지율 95% 이상, 오탐 5% 이하")는 개별 케이스가 아니라 테스트셋 전체 집계 비율로 판정하도록 설계했다 — 정규식 기반 탐지는 "카톡 아이디는 나중에 알려드릴게요"처럼 키워드와 ID 사이에 다른 말이 끼면 놓칠 수 있기 때문이다(실제로 확인됨). 양성 30개(전화번호 9·카카오톡 6·인스타그램 4·텔레그램 2·위챗 2·라인 3·이메일 4) 탐지율 100%, 음성 15개(일반 동행글 문구) 오탐율 0%로 두 기준 모두 충족을 실제로 확인했다. 대표 케이스 개별 스팟체크 4건도 추가했다.
+>
+> **필요한 최소 수정(이 Task Expected File 밖, 사람 확인 없이 진행 — 이 Task를 실행 가능하게 하는 필수 설정 오류 수정)**: `vitest.config.ts`에 `resolve.alias`("@" → "./src")가 없어 `@/components/...` 형태의 import를 쓰는 이 테스트 파일이 전혀 실행되지 못했다(`Cannot find package '@/components/scr-003/MateWriteTab'`) — `tsconfig.json`의 경로 별칭을 Vitest에도 반영하도록 추가했다. `TEST-RLS-BASIC`에서 이미 같은 파일(`vitest.config.ts`)의 `include`를 수정한 바 있어 연속선상의 필수 보정으로 판단해 바로 처리했다.
+>
+> `npm run typecheck`/`lint`/`format:check` PASS. `npm run test:unit` 실행 결과 6개 테스트 모두 실제 PASS(RLS 통합 테스트는 환경변수 미설정으로 별도 skip, 서로 영향 없음).
 
 ---
 

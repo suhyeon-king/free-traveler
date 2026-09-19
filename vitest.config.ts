@@ -1,6 +1,16 @@
+import path from "node:path";
+
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
+  // tsconfig.json의 "@/*" → "./src/*" 경로 별칭을 Vitest(Vite)에서도 그대로
+  // 쓸 수 있게 한다 — 없으면 `@/`로 import하는 소스 파일을 테스트에서 import할
+  // 수 없다(UNIT-CONTACT-DETECTION에서 실제로 확인된 문제).
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   test: {
     // src 내 Unit Test, tests/unit, tests/rls(통합 테스트, env-gated로 skip 가능)를
     // 실행 대상으로 삼는다. tests/e2e는 Playwright 전용이므로 Vitest가 검색하지

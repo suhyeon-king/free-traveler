@@ -164,10 +164,10 @@
         "TEST-RLS-BASIC",
         "UNIT-CONTACT-DETECTION"
       ],
-      "status": "in_progress",
+      "status": "completed",
       "checkpoint_required": false,
       "checkpoint_result": null,
-      "last_completed_task": "TEST-RLS-BASIC",
+      "last_completed_task": "UNIT-CONTACT-DETECTION",
       "note": null
     },
     {
