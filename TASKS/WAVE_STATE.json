@@ -164,9 +164,11 @@
         "TEST-RLS-BASIC",
         "UNIT-CONTACT-DETECTION"
       ],
-      "status": "pending",
+      "status": "in_progress",
       "checkpoint_required": false,
-      "checkpoint_result": null
+      "checkpoint_result": null,
+      "last_completed_task": "CI-LINT-TYPECHECK-TEST",
+      "note": null
     },
     {
       "wave_id": "W11",

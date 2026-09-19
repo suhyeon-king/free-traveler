@@ -4,8 +4,15 @@
 - **Priority:** P0
 - **Implementation Status:** IMPLEMENT
 - **Task List 출처:** `TASKS/00_TASK_LIST.md` Seq 62
+- **Task Status:** DONE
 
-> 이 문서는 계획 Task다. 실제 코드는 작성되지 않았으며 상태는 `NOT_STARTED`다.
+> `.github/workflows/ci.yml`는 이전 Wave에서 이미 작성되어 있었다(quality job: format:check → lint → typecheck → test:unit → task:contract → screen:contract(ci mode) → build; public-smoke job: Chromium `test:e2e:public`). 이번 Task에서 실제로 로컬에서 전체 체인을 재실행해 통과를 확인했다.
+>
+> **실제 오류 발견 및 해결(사람 확인 완료)**: `npm run task:contract`(`scripts/audit_tasks.py`)가 실제로 FAIL했다 — check 12의 정규식이 "테이블" 단어가 있는 줄 전체에서 backtick 토큰을 모두 테이블명으로 오인식해, DB Task 완료 메모에 적힌 `role`/`is_adult`/`flight_outbound_url`/`pg_policies` 같은 컬럼명·함수명까지 테이블로 잘못 세어 "12개 테이블"로 오판했다(실제는 6개). 사람에게 확인한 뒤 "스크립트 휴리스틱 수정(권장)"을 선택해, `scripts/audit_tasks.py`(이 Task 또는 다른 어떤 Task의 Expected Files에도 없는 공용 툴링, 사전 확인 받음)의 check 12 정규식을 "테이블" 단어 바로 앞/뒤에 붙은 backtick 목록만 인식하도록 좁혀 고쳤다. 재실행 결과 18/18 PASS.
+>
+> `npm run format:check`/`lint`/`typecheck`/`test:unit`(테스트 파일 0개, exit 0)/`task:contract`(18/18 PASS)/`screen:contract -- --mode=ci`(PASS)/`build` 모두 PASS 확인.
+>
+> **알려진 제한사항**: `npm run test:unit`은 현재 단위 테스트 파일이 없어 "No test files found, exiting with code 0"으로 통과한다 — 실제 단위 테스트는 `UNIT-CONTACT-DETECTION`(이번 Wave의 다른 Task)이 추가한다. `test:e2e:public`(Playwright)은 CI에서 실행되지만 로컬에서는 이 Task 범위에서 별도로 재검증하지 않았다(해당 검증은 `E2E-PUBLIC-SMOKE` Task에서 수행).
 
 ---
 

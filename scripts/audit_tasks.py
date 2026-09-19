@@ -408,13 +408,26 @@ def check_11_12(audit: Audit, rows: list[dict], detail_texts: dict[str, str]) ->
     audit.add(11, "DB Schema·RLS·Access·Seed Task 존재", len(missing) == 0,
                [f"누락: {t}" for t in missing])
 
-    table_line_re = re.compile(r"[^\n]*테이블[^\n]*")
+    # "테이블" 단어 바로 앞/뒤에 붙은 backtick 목록만 테이블명 후보로 본다(예:
+    # "6개 테이블(`profiles`, `mate_posts`, ...)" 또는 "`profiles`, ... 6개
+    # 테이블 외의 테이블을 추가하지 않는다"). 문장 안에 있는 무관한 backtick
+    # 식별자(컬럼명·함수명·다른 테이블 조회 결과 등)까지 오인식하지 않도록
+    # 목록이 "테이블" 앞뒤에 바로 붙어 있는 경우만 매칭한다.
+    backtick_list_token = r"`[a-z][a-z0-9_]{2,40}`[,\s/]*"
+    table_list_after_re = re.compile(
+        rf"테이블\s*[:\(]?\s*((?:{backtick_list_token}){{2,}})"
+    )
+    table_list_before_re = re.compile(
+        rf"((?:{backtick_list_token}){{2,}})\s*\d*\s*개?\s*테이블"
+    )
     backtick_token_re = re.compile(r"`([a-z][a-z0-9_]{2,40})`")
     all_tables: set[str] = set()
     for tid, r in db_rows.items():
         text = r["Functional AC"] + "\n" + detail_texts.get(tid, "")
-        for line in table_line_re.findall(text):
-            all_tables.update(backtick_token_re.findall(line))
+        for group in table_list_after_re.findall(text):
+            all_tables.update(backtick_token_re.findall(group))
+        for group in table_list_before_re.findall(text):
+            all_tables.update(backtick_token_re.findall(group))
 
     details12: list[str] = []
     ok12 = True
