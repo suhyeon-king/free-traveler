@@ -127,49 +127,49 @@ export const REPRESENTATIVE_VISITED_COUNTRIES: string[] = [
 /** 대표 소개 갤러리(8개 이상, REQ-FUNC-061). 실제 사진 파일은 콘텐츠 검수 단계에서 채운다. */
 export const REPRESENTATIVE_GALLERY: GalleryImage[] = [
   {
-    url: "/images/representative/gallery-01.jpg",
+    url: "/images/representative/gallery-01.svg",
     alt: "동남아시아 배낭여행 당시 시장 골목을 걷는 모습",
     sourceUrl: "/images/representative/gallery-01.jpg",
     attribution: "free_traveler 자체 촬영(2014)",
   },
   {
-    url: "/images/representative/gallery-02.jpg",
+    url: "/images/representative/gallery-02.svg",
     alt: "유럽 철도 여행 중 기차 플랫폼에서의 모습",
     sourceUrl: "/images/representative/gallery-02.jpg",
     attribution: "free_traveler 자체 촬영(2016)",
   },
   {
-    url: "/images/representative/gallery-03.jpg",
+    url: "/images/representative/gallery-03.svg",
     alt: "발칸반도 산악 지형을 배경으로 한 트레킹 모습",
     sourceUrl: "/images/representative/gallery-03.jpg",
     attribution: "free_traveler 자체 촬영(2018)",
   },
   {
-    url: "/images/representative/gallery-04.jpg",
+    url: "/images/representative/gallery-04.svg",
     alt: "일본 지방 소도시의 전통 거리 풍경",
     sourceUrl: "/images/representative/gallery-04.jpg",
     attribution: "free_traveler 자체 촬영(2019)",
   },
   {
-    url: "/images/representative/gallery-05.jpg",
+    url: "/images/representative/gallery-05.svg",
     alt: "국내 해안 지역 답사 중 촬영한 해변 풍경",
     sourceUrl: "/images/representative/gallery-05.jpg",
     attribution: "free_traveler 자체 촬영(2021)",
   },
   {
-    url: "/images/representative/gallery-06.jpg",
+    url: "/images/representative/gallery-06.svg",
     alt: "오세아니아 재방문 중 도심 스카이라인 풍경",
     sourceUrl: "/images/representative/gallery-06.jpg",
     attribution: "free_traveler 자체 촬영(2023)",
   },
   {
-    url: "/images/representative/gallery-07.jpg",
+    url: "/images/representative/gallery-07.svg",
     alt: "여행 기록 노트와 지도를 펼쳐놓은 작업 모습",
     sourceUrl: "/images/representative/gallery-07.jpg",
     attribution: "free_traveler 자체 촬영(2024)",
   },
   {
-    url: "/images/representative/gallery-08.jpg",
+    url: "/images/representative/gallery-08.svg",
     alt: "누적 30개국 방문을 기념해 정리한 여행 기록 페이지",
     sourceUrl: "/images/representative/gallery-08.jpg",
     attribution: "free_traveler 자체 촬영(2025)",

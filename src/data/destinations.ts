@@ -81,7 +81,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 서울관광재단(visitseoul.net)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/seoul.jpg",
+      url: "/images/destinations/seoul.svg",
       alt: "서울 경복궁과 북촌 한옥마을이 보이는 풍경",
     },
   },
@@ -119,7 +119,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 부산관광공사(visitbusan.net)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/busan.jpg",
+      url: "/images/destinations/busan.svg",
       alt: "부산 감천문화마을의 계단식 마을 전경",
     },
   },
@@ -157,7 +157,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 제주관광공사(visitjeju.net)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/jeju.jpg",
+      url: "/images/destinations/jeju.svg",
       alt: "제주 성산일출봉과 주변 해안 풍경",
     },
   },
@@ -194,7 +194,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 경주시 문화관광(gyeongju.go.kr)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/gyeongju.jpg",
+      url: "/images/destinations/gyeongju.svg",
       alt: "경주 대릉원 고분군과 첨성대 풍경",
     },
   },
@@ -231,7 +231,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 전주시 문화관광(jeonju.go.kr)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/jeonju.jpg",
+      url: "/images/destinations/jeonju.svg",
       alt: "전주 한옥마을의 기와지붕이 이어진 골목 풍경",
     },
   },
@@ -268,7 +268,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 강릉시 문화관광(gntour.go.kr)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/gangneung.jpg",
+      url: "/images/destinations/gangneung.svg",
       alt: "강릉 안목해변 커피거리와 동해 바다 풍경",
     },
   },
@@ -306,7 +306,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 여수시 문화관광(yeosu.go.kr)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/yeosu.jpg",
+      url: "/images/destinations/yeosu.svg",
       alt: "여수 밤바다와 해상케이블카 야경",
     },
   },
@@ -343,7 +343,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 통영시 문화관광(tongyeong.go.kr)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/tongyeong.jpg",
+      url: "/images/destinations/tongyeong.svg",
       alt: "통영 동피랑 벽화마을과 강구안 항구 풍경",
     },
   },
@@ -380,7 +380,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 속초시 문화관광(sokcho.go.kr)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/sokcho.jpg",
+      url: "/images/destinations/sokcho.svg",
       alt: "속초 설악산 울산바위와 동해 해안 풍경",
     },
   },
@@ -418,7 +418,7 @@ export const DOMESTIC_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 수원문화재단(swcf.or.kr)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/suwon.jpg",
+      url: "/images/destinations/suwon.svg",
       alt: "수원화성 성곽과 팔달문 풍경",
     },
   },
@@ -459,7 +459,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 도쿄도 관광공식사이트(GO TOKYO)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/tokyo.jpg",
+      url: "/images/destinations/tokyo.svg",
       alt: "도쿄 아사쿠사 센소지와 도쿄 스카이트리가 보이는 풍경",
     },
   },
@@ -496,7 +496,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 오사카관광국(Osaka Convention & Tourism Bureau)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/osaka.jpg",
+      url: "/images/destinations/osaka.svg",
       alt: "오사카 도톤보리의 네온 간판과 강변 풍경",
     },
   },
@@ -533,7 +533,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 베트남 관광청(vietnam.travel)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/hanoi.jpg",
+      url: "/images/destinations/hanoi.svg",
       alt: "하노이 구시가지 골목과 호안끼엠 호수 풍경",
     },
   },
@@ -569,7 +569,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 베트남 관광청(vietnam.travel)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/da-nang.jpg",
+      url: "/images/destinations/da-nang.svg",
       alt: "다낭 미케 비치와 용다리 풍경",
     },
   },
@@ -606,7 +606,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 태국관광청(Tourism Authority of Thailand)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/bangkok.jpg",
+      url: "/images/destinations/bangkok.svg",
       alt: "방콕 왓 아룬과 짜오프라야 강 풍경",
     },
   },
@@ -644,7 +644,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 태국관광청(Tourism Authority of Thailand)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/chiang-mai.jpg",
+      url: "/images/destinations/chiang-mai.svg",
       alt: "치앙마이 왓 체디루앙과 고성 풍경",
     },
   },
@@ -682,7 +682,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 대만관광청(Taiwan Tourism Administration)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/taipei.jpg",
+      url: "/images/destinations/taipei.svg",
       alt: "타이베이 101과 도시 야경",
     },
   },
@@ -720,7 +720,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 대만관광청(Taiwan Tourism Administration)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/kaohsiung.jpg",
+      url: "/images/destinations/kaohsiung.svg",
       alt: "가오슝 롄츠탄 용호탑과 호수 풍경",
     },
   },
@@ -757,7 +757,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 말레이시아 관광청(Tourism Malaysia)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/kuala-lumpur.jpg",
+      url: "/images/destinations/kuala-lumpur.svg",
       alt: "쿠알라룸푸르 페트로나스 트윈타워 야경",
     },
   },
@@ -794,7 +794,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 말레이시아 관광청(Tourism Malaysia)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/penang.jpg",
+      url: "/images/destinations/penang.svg",
       alt: "페낭 조지타운의 스트리트 아트 벽화",
     },
   },
@@ -831,7 +831,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 이탈리아 관광청(ENIT)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/rome.jpg",
+      url: "/images/destinations/rome.svg",
       alt: "로마 콜로세움과 포로 로마노 유적",
     },
   },
@@ -866,7 +866,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 이탈리아 관광청(ENIT)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/florence.jpg",
+      url: "/images/destinations/florence.svg",
       alt: "피렌체 두오모 대성당과 아르노 강 풍경",
     },
   },
@@ -902,7 +902,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 프랑스 관광청(Atout France)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/paris.jpg",
+      url: "/images/destinations/paris.svg",
       alt: "파리 에펠탑과 센 강 풍경",
     },
   },
@@ -939,7 +939,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 프랑스 관광청(Atout France)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/nice.jpg",
+      url: "/images/destinations/nice.svg",
       alt: "니스 프롬나드 데 장글레와 지중해 해안 풍경",
     },
   },
@@ -975,7 +975,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 스페인 관광청(Turespaña)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/barcelona.jpg",
+      url: "/images/destinations/barcelona.svg",
       alt: "바르셀로나 사그라다 파밀리아 성당 외관",
     },
   },
@@ -1010,7 +1010,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 스페인 관광청(Turespaña)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/madrid.jpg",
+      url: "/images/destinations/madrid.svg",
       alt: "마드리드 왕궁과 광장 풍경",
     },
   },
@@ -1047,7 +1047,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 영국 관광청(VisitBritain)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/london.jpg",
+      url: "/images/destinations/london.svg",
       alt: "런던 빅벤과 웨스트민스터 다리 풍경",
     },
   },
@@ -1083,7 +1083,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 영국 관광청(VisitBritain)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/edinburgh.jpg",
+      url: "/images/destinations/edinburgh.svg",
       alt: "에든버러 성과 로열 마일 풍경",
     },
   },
@@ -1119,7 +1119,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 독일관광청(GNTB)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/berlin.jpg",
+      url: "/images/destinations/berlin.svg",
       alt: "베를린 브란덴부르크 문 풍경",
     },
   },
@@ -1156,7 +1156,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 독일관광청(GNTB)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/munich.jpg",
+      url: "/images/destinations/munich.svg",
       alt: "뮌헨 마리엔 광장과 신 시청사 풍경",
     },
   },
@@ -1193,7 +1193,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 포르투갈 관광청(Turismo de Portugal)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/lisbon.jpg",
+      url: "/images/destinations/lisbon.svg",
       alt: "리스본 알파마 지구와 노란 트램 풍경",
     },
   },
@@ -1230,7 +1230,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 포르투갈 관광청(Turismo de Portugal)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/porto.jpg",
+      url: "/images/destinations/porto.svg",
       alt: "포르투 리베이라 지구와 동 루이스 1세 다리 풍경",
     },
   },
@@ -1265,7 +1265,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 그리스 관광청(GNTO)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/athens.jpg",
+      url: "/images/destinations/athens.svg",
       alt: "아테네 아크로폴리스와 파르테논 신전 풍경",
     },
   },
@@ -1302,7 +1302,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 그리스 관광청(GNTO)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/santorini.jpg",
+      url: "/images/destinations/santorini.svg",
       alt: "산토리니 이아 마을의 흰색 건물과 칼데라 절벽 풍경",
     },
   },
@@ -1338,7 +1338,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 튀르키예 문화관광부(Go Türkiye)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/istanbul.jpg",
+      url: "/images/destinations/istanbul.svg",
       alt: "이스탄불 아야소피아와 블루 모스크 풍경",
     },
   },
@@ -1378,7 +1378,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 튀르키예 문화관광부(Go Türkiye)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/cappadocia.jpg",
+      url: "/images/destinations/cappadocia.svg",
       alt: "카파도키아 기암지대 위로 떠 있는 열기구 풍경",
     },
   },
@@ -1415,7 +1415,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 스위스 관광청(Switzerland Tourism)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/zurich.jpg",
+      url: "/images/destinations/zurich.svg",
       alt: "취리히 구시가지와 리마트 강변 풍경",
     },
   },
@@ -1452,7 +1452,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
     source: "free_traveler 현지 답사 기록 + 스위스 관광청(Switzerland Tourism)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/interlaken.jpg",
+      url: "/images/destinations/interlaken.svg",
       alt: "인터라켄과 융프라우 알프스 산악 풍경",
     },
   },
@@ -1491,7 +1491,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 오스트레일리아 관광청(Tourism Australia)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/sydney.jpg",
+      url: "/images/destinations/sydney.svg",
       alt: "시드니 오페라 하우스와 하버 브리지 풍경",
     },
   },
@@ -1529,7 +1529,7 @@ export const OVERSEAS_DESTINATIONS: Destination[] = [
       "free_traveler 현지 답사 기록 + 오스트레일리아 관광청(Tourism Australia)",
     updatedAt: UPDATED_AT,
     image: {
-      url: "/images/destinations/melbourne.jpg",
+      url: "/images/destinations/melbourne.svg",
       alt: "멜버른 호시어 레인 스트리트 아트 골목",
     },
   },
